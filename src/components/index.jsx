@@ -1,1 +1,1 @@
-//Aqui se inportaran los componentes.
+//Aqui se inportaran todos los componentes.
