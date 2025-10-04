@@ -12,7 +12,13 @@ export const CardsRedondas = () => {
             loading="lazy"
             alt="Alfajores"
           />
-          <h4 className="text">Alfajores</h4>
+          <div className="text-center my-1 overlay-text">
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam,
+              quod.
+            </p>
+          </div>
+          <h4 className="text-center mt-4 text">Alfajores</h4>
         </Link>
       </div>
     </Container>

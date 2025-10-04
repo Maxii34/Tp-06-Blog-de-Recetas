@@ -36,7 +36,6 @@ nav {
   border-bottom: 2px solid black;
 }
 
-
 .img-category {
   width: 100%;
   aspect-ratio: 1/1;
@@ -187,7 +186,7 @@ nav {
   border-radius: 8px 8px 0 0;
 }
 
-/*opciones recetas*/
+/* Efecto para la cards circular de inicio */
 
 .circle {
   border: 2px solid black;
@@ -197,17 +196,17 @@ nav {
   overflow: hidden;
   border-radius: 100%;
 }
-
 .div-options {
+  position: relative;
   width: 230px;
   height: auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
 }
-
-/* Estilo base de las cards redondas */
 .cards,
 .img-options {
   width: 100%;
@@ -215,17 +214,15 @@ nav {
   min-width: 200px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 50%; 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6),
-              0 4px 6px rgba(0, 0, 0, 0.4);
-  transition: transform 0.8s, border-radius 0.8s; 
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 4px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.8s, border-radius 0.8s;
   border: 3px solid #c3c6ce;
 }
-
 .cards:hover,
 .img-options:hover {
   transform: scale(1.03);
-  border-radius: 10px; 
+  border-radius: 10px;
 }
 .text {
   display: flex;
@@ -233,14 +230,39 @@ nav {
   padding-top: 10px;
   font-size: 25px;
   color: #454545b9;
+  transition: transform 0.3s ease, color 0.3s ease; 
 }
-.img-options:hover + .text {
+/* Efecto del título al pasar sobre la imagen */
+.img-options:hover ~ .text {
   color: #222324;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  transition: color 0.3s ease;
 }
-------------
 
+
+.img-options:hover + .overlay-text {
+  opacity: 1; 
+  transform: translateY(0);
+}
+.img-options:hover {
+  transform: translateY(16px); 
+  color: #222324;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* Texto overlay que aparece sobre la imagen */
+.overlay-text {
+  position: absolute;
+  bottom: 55px; 
+  left: 4px;
+  width: 223px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); 
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
 .div-options {
   width: 230px;
   height: auto;
@@ -249,9 +271,7 @@ nav {
   margin-right: auto;
   justify-content: center;
 }
-
-
-
+------------------------
 
 /*.vermas {
   display: inline-block;
@@ -277,8 +297,6 @@ nav {
   }
 }
 */
-
-
 
 .baner {
   background-image: url("https://images.pexels.com/photos/4099123/pexels-photo-4099123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); /* Poné acá la ruta de tu imagen */
