@@ -10,6 +10,15 @@ export const ContainerCardsR = () => {
         <Col xs={12} md={4} lg={3} className="my-3">
           <CardsRedondas />
         </Col>
+        <Col xs={12} md={4} lg={3} className="my-3">
+          <CardsRedondas />
+        </Col>
+        <Col xs={12} md={4} lg={3} className="my-3">
+          <CardsRedondas />
+        </Col>
+        <Col xs={12} md={4} lg={3} className="my-3">
+          <CardsRedondas />
+        </Col>
       </Row>
     </Container>
   );

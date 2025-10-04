@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap";
 import { Link } from "react-router";
+import "../Ui/Cards.css"
 
 export const CardsRedondas = () => {
   return (
