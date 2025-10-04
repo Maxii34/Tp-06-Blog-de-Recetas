@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import { Menu, Footer, Video } from "../index.jsx";
+import { Menu, Footer, Video, ContainerCardsR } from "../index.jsx";
 
 
 export const Inicio = () => {
@@ -9,6 +9,7 @@ export const Inicio = () => {
         <Container fluid>
         <main>
         <Video />
+        <ContainerCardsR />
 
         </main>
         </Container>
