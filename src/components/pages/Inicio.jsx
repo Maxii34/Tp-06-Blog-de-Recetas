@@ -1,14 +1,14 @@
 import { Container } from "react-bootstrap";
-import { Menu, Footer } from "../index.jsx";
+import { Menu, Footer, Video } from "../index.jsx";
 
 
 export const Inicio = () => {
     return (
         <>
         <Menu />
-        <Container>
+        <Container fluid>
         <main>
-            
+        <Video />
 
         </main>
         </Container>

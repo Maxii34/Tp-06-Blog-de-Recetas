@@ -4,13 +4,11 @@ import { Link } from "react-router";
 export const Footer = () => {
   return (
     <footer className="bg-dark text-light mt-4 pt-4 pb-3">
-      <Container>
-        <Row className="align-items-start text-center text-md-start">
-          {/* Logo */}
-
+      <Container fluid>
+        <Row className="align-items-start text-center text-md-start gy-4">
           {/* Información */}
-          <Col xs={12} md={4} className="mb-3 mb-md-0 px-2">
-            <h5 className="fw-bold mb-3">Caracteristicas</h5>
+          <Col xs={12} md={4} className="px-3">
+            <h5 className="fw-bold mb-3">Características</h5>
             <ul className="list-unstyled mb-0">
               <li className="my-2">
                 <Link to="" className="text-white text-decoration-none">
@@ -18,30 +16,36 @@ export const Footer = () => {
                 </Link>
               </li>
               <li className="my-2">
-                <p className="text-white text-decoration-none">Comunidad</p>
+                <span className="text-white text-decoration-none">
+                  Comunidad
+                </span>
               </li>
               <li className="my-2">
-                <p className="text-white text-decoration-none">Productos</p>
+                <span className="text-white text-decoration-none">
+                  Productos
+                </span>
               </li>
               <li className="my-2">
-                <p className="text-white text-decoration-none">
+                <span className="text-white text-decoration-none">
                   Sobre nosotros
-                </p>
+                </span>
               </li>
             </ul>
           </Col>
-          <Col xs={12} md={4} className="mb-3 mb-md-0 px-2">
+
+          {/* Contacto */}
+          <Col xs={12} md={4} className="px-3">
             <h5 className="fw-bold mb-3">Contactanos</h5>
             <ul className="list-unstyled mb-0">
-              <li className="my-2 d-flex align-items-center">
+              <li className="my-2 d-flex align-items-center justify-content-center justify-content-md-start">
                 <i className="bi bi-telephone-fill fs-5 me-2"></i>
                 <span className="text-white">+54 11 3456 7890</span>
               </li>
-              <li className="my-2 d-flex align-items-center">
+              <li className="my-2 d-flex align-items-center justify-content-center justify-content-md-start">
                 <i className="bi bi-envelope-fill fs-5 me-2"></i>
                 <span className="text-white">tartasyco@gmail.com</span>
               </li>
-              <li className="my-2 d-flex align-items-center">
+              <li className="my-2 d-flex align-items-center justify-content-center justify-content-md-start">
                 <i className="bi bi-geo-alt-fill fs-5 me-2"></i>
                 <span className="text-white">
                   Sucursal Centro - Av. Siempre Viva 123
@@ -51,21 +55,30 @@ export const Footer = () => {
           </Col>
 
           {/* Redes sociales */}
-          <Col xs={12} md={4} className="mb-3 mb-md-0 px-2">
+          <Col xs={12} md={4} className="px-3">
             <h5 className="fw-bold mb-3">Seguinos en</h5>
             <ul className="list-unstyled mb-0">
               <li className="my-2">
-                <a className="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-md-start">
+                <a
+                  href="#"
+                  className="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-md-start"
+                >
                   <i className="bi bi-instagram fs-5 me-2"></i> Instagram
                 </a>
               </li>
               <li className="my-2">
-                <a className="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-md-start">
+                <a
+                  href="#"
+                  className="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-md-start"
+                >
                   <i className="bi bi-youtube fs-5 me-2"></i> Youtube
                 </a>
               </li>
               <li className="my-2">
-                <a className="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-md-start">
+                <a
+                  href="#"
+                  className="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-md-start"
+                >
                   <i className="bi bi-tiktok fs-5 me-2"></i> Tiktok
                 </a>
               </li>

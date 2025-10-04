@@ -8,4 +8,4 @@ export * from "./shared/Menu.jsx";
 export * from "./Ui/CardsCuadradas.jsx";
 export * from "./Ui/CardsRecetas.jsx";
 export * from "./Ui/CardsRedondas.jsx";
-export * from "./Ui/Carousel.jsx";
+export * from "./Ui/Video.jsx";
