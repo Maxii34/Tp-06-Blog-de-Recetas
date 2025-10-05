@@ -376,3 +376,32 @@ nav {
   background-color: #201b1b;
   border-color: #000;
 }
+
+/*Baner imagen BG Recetas*/
+.hero-section {
+  position: relative;
+  background-image: url("https://images.pexels.com/photos/7966476/pexels-photo-7966476.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-section .hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 80px 20px;
+}

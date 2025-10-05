@@ -7,15 +7,18 @@ export const Menu = () => {
   return (
     <Navbar
       expand="lg"
-      className="bg-body-tertiary border-1 border-dark border-bottom"
+      className="bg-body-tertiary border-1 border-dark border-bottom py-3 shadow"
     >
       <Container>
-        <Navbar.Brand href="#home">Tarta & Co.</Navbar.Brand>
+        <Navbar.Brand as={Link} to={"/"}>Tarta & Co.</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Link to={"/"}>Inicio</Link>
-            <Link to={"/recetas"}>Recetas</Link>
+            <Link to={"/"} className="nav-link me-1">Inicio</Link>
+            <Link to={"/recetas"} className="nav-link me-1">Recetas</Link>
+            <Link to={""} className="nav-link me-1">Administracion</Link>
+            <Link to={""} className="nav-link me-1">Iniciar Sesion</Link>
+            <Link to={""} className="nav-link me-1">Registrarse</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
