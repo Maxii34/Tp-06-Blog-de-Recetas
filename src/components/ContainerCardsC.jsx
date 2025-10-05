@@ -5,7 +5,7 @@ export const ContainerCardsC = () => {
   return (
     <div>
       <Container>
-        <Row className="g-3 justify-content-between">
+        <Row className="g-3 d-flex justify-content-center">
           <Col xs={12} sm={6} lg={3}>
             <CardsCuadradas />
           </Col>

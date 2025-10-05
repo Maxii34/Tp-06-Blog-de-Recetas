@@ -1,10 +1,10 @@
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import "./../Ui/Cards.css";
 import { Link } from "react-router";
 
 export const CardsCuadradas = () => {
   return (
-     <Card className="card">
+     <Card className="cards1">
       {/* === Aquí va la IMAGEN: reemplazá la ruta por la tuya === */}
       <img
         src="/images/mi-foto.jpg"    // <- cambia esto por la ruta o import que uses
@@ -28,12 +28,17 @@ export const CardsCuadradas = () => {
       */}
 
       <Card.Body className="card__content">
+        <div className="px-3 pt-3">
         <Card.Title className="card__title">Card Title</Card.Title>
         <Card.Text className="card__description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
           veniam, quis nostrud exercitation ullamco.
         </Card.Text>
+        </div>
+        <Card.Footer>
+        <Button variant="dark" className="card__button">Ver más</Button>
+        </Card.Footer>
       </Card.Body>
     </Card>
   );

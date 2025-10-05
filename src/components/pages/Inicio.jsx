@@ -6,7 +6,7 @@ export const Inicio = () => {
     <>
       <Menu />
       <Container fluid>
-        <main>
+        <main> 
           <Video />
           <ContainerCardsR />
           <section class="container bg-dark rounded-2">
