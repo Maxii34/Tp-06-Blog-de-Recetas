@@ -1,8 +1,13 @@
+import { Menu, Footer, ContainerRecetas} from "../index.jsx";
 
 export const Recetas = () => {
-    return (
-        <div>
-            Hola
-        </div>
-    );
+  return (
+    <>
+      <Menu />
+    <main>
+      <ContainerRecetas />
+    </main>
+      <Footer />
+    </> 
+  );
 };

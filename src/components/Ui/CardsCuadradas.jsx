@@ -5,17 +5,14 @@ import { Link } from "react-router";
 export const CardsCuadradas = () => {
   return (
      <Card className="cards1">
-      {/* === Aquí va la IMAGEN: reemplazá la ruta por la tuya === */}
+
       <img
-        src="/images/mi-foto.jpg"    // <- cambia esto por la ruta o import que uses
+        src="/images/mi-foto.jpg"
         alt="Imagen descriptiva"
         className="card__img"
       />
 
       {/*
-      Si preferís el SVG placeholder en vez de la imagen, descomentá esto y
-      comentá/borra el <img> de arriba:
-
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

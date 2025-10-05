@@ -42,7 +42,7 @@
   padding-top: 10px;
   font-size: 25px;
   color: #454545b9;
-  transition: transform 0.3s ease, color 0.3s ease; 
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 /* Efecto del título al pasar sobre la imagen */
 .img-options:hover ~ .text {
@@ -50,29 +50,28 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
 .img-options:hover + .overlay-text {
-  opacity: 1; 
+  opacity: 1;
   transform: translateY(0);
 }
 .img-options:hover {
-  transform: translateY(16px); 
+  transform: translateY(16px);
   color: #222324;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 /* Texto overlay que aparece sobre la imagen */
 .overlay-text {
   position: absolute;
-  bottom: 55px; 
+  bottom: 55px;
   left: 4px;
   width: 223px;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 5px;
   border-radius: 5px;
-  opacity: 0; 
-  transform: translateY(20px); 
+  opacity: 0;
+  transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .div-options {
@@ -87,7 +86,8 @@
 /* Nuevo cards*/
 .cards1 {
   position: relative;
-  width: 268px;
+  width: auto;
+  max-width: 100%;
   height: 230px;
   background-color: #f2f2f2;
   display: flex;
@@ -97,6 +97,8 @@
   perspective: 1000px;
   box-shadow: 0 0 0 5px #ffffff80;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cards1 svg {
@@ -145,6 +147,88 @@
   color: #777;
   line-height: 1.4;
 }
-.card__button{
-  
+
+/* Clases para cards de recetas*/
+.cards2 {
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 16/9;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 0 0 0 5px #ffffff80;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cards2 svg {
+  width: 48px;
+  fill: #333;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card__images2 {
+  width: 100%;
+  height: 100%;
+}
+
+.cards2:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.card__contents2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cards2:hover .card__contents2 {
+  transform: rotateX(0deg);
+}
+
+.card__titles2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+  font-weight: 700;
+}
+
+.cards2:hover svg {
+  scale: 0;
+}
+
+.card__descriptions2 {
+  margin: 10px 0 10px;
+  font-size: 12px;
+  color: #777;
+  line-height: 1.4;
+}
+
+.card__buttons2 {
+  padding: 15px;
+  border-radius: 8px;
+  background: #777;
+  border: none;
+  color: white;
+}
+
+.secondarys2 {
+  background: transparent;
+  color: #777;
+  border: 1px solid #777;
 }
