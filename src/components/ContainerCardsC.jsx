@@ -4,7 +4,7 @@ import { CardsCuadradas } from "./Ui/CardsCuadradas.jsx";
 export const ContainerCardsC = () => {
   return (
     <div className="d-flex justify-content-center">
-      <Container>
+      <Container fluid>
         <Row className="g-3 d-flex justify-content-center">
           <Col xs={12} sm={6} md={4} lg={3}>
             <CardsCuadradas />

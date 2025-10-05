@@ -9,7 +9,7 @@ export const CardsCuadradas = () => {
       <img
         src="/images/mi-foto.jpg"
         alt="Imagen descriptiva"
-        className="card__img"
+        className="card__imgs1"
       />
 
       {/*
@@ -24,17 +24,17 @@ export const CardsCuadradas = () => {
       </svg>
       */}
 
-      <Card.Body className="card__content">
+      <Card.Body className="card__contents1">
         <div className="px-3 pt-3">
-        <Card.Title className="card__title">Card Title</Card.Title>
-        <Card.Text className="card__description">
+        <Card.Title className="card__titles1">Card Title</Card.Title>
+        <Card.Text className="card__descriptions1">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
           veniam, quis nostrud exercitation ullamco.
         </Card.Text>
         </div>
         <Card.Footer>
-        <Button variant="dark" className="card__button">Ver más</Button>
+        <Button variant="dark" className="card__buttons1">Ver más</Button>
         </Card.Footer>
       </Card.Body>
     </Card>
