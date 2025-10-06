@@ -16,7 +16,7 @@ export const Menu = () => {
           <Nav className="ms-auto">
             <Link to={"/"} className="nav-link me-1">Inicio</Link>
             <Link to={"/recetas"} className="nav-link me-1">Recetas</Link>
-            <Link to={""} className="nav-link me-1">Administracion</Link>
+            <Link to={"/administracion"} className="nav-link me-1">Administracion</Link>
             <Link to={""} className="nav-link me-1">Iniciar Sesion</Link>
             <Link to={""} className="nav-link me-1">Registrarse</Link>
           </Nav>

@@ -9,3 +9,4 @@ export * from "./Ui/CardsCuadradas.jsx";
 export * from "./Ui/CardsRecetas.jsx";
 export * from "./Ui/CardsRedondas.jsx";
 export * from "./Ui/Video.jsx";
+export * from "./pages/Administracion.jsx";
