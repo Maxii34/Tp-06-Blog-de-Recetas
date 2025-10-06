@@ -1,6 +1,5 @@
 import { Button, Card } from "react-bootstrap";
 import "./../Ui/Cards.css";
-import { Link } from "react-router";
 
 export const CardsCuadradas = () => {
   return (

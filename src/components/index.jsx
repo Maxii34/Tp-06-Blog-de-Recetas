@@ -1,3 +1,4 @@
+//Componentes inportados a usar.
 export * from "./ContainerCardsC.jsx";
 export * from "./ContainerCardsR.jsx";
 export * from "./ContainerRecetas.jsx";
@@ -10,3 +11,4 @@ export * from "./Ui/CardsRecetas.jsx";
 export * from "./Ui/CardsRedondas.jsx";
 export * from "./Ui/Video.jsx";
 export * from "./pages/Administracion.jsx";
+export * from "./Ui/ItenTable.jsx";
