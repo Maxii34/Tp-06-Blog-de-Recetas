@@ -19,7 +19,7 @@ export const Menu = ({ handleShow }) => {
             <Link to={"/recetas"} className="nav-link me-1">Recetas</Link>
             <Link to={"/administracion"} className="nav-link me-1">Administracion</Link>
             <button className="nav-link me-1" onClick={handleShow}>Iniciar Sesion</button>
-            <Link to={""} className="nav-link me-1">Registrarse</Link>
+            <Link to={"/register"} className="nav-link me-1">Registrarse</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
