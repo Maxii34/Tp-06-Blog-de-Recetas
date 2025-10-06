@@ -5,8 +5,8 @@ export const Recetas = () => {
   return (
     <>
       <Menu />
-      <Container fluid>
-        <main>
+      <main>
+        <Container fluid>
           <section className="hero-section">
             <div className="overlay"></div>
             <div className="hero-content">
@@ -43,8 +43,8 @@ export const Recetas = () => {
               </Row>
             </div>
           </div>
-        </main>
-      </Container>
+        </Container>
+      </main>
       <Footer />
     </>
   );

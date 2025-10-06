@@ -3,7 +3,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router";
 
-export const Menu = () => {
+export const Menu = ({ handleShow }) => {
+
   return (
     <Navbar
       expand="lg"
@@ -17,7 +18,7 @@ export const Menu = () => {
             <Link to={"/"} className="nav-link me-1">Inicio</Link>
             <Link to={"/recetas"} className="nav-link me-1">Recetas</Link>
             <Link to={"/administracion"} className="nav-link me-1">Administracion</Link>
-            <Link to={""} className="nav-link me-1">Iniciar Sesion</Link>
+            <button className="nav-link me-1" onClick={handleShow}>Iniciar Sesion</button>
             <Link to={""} className="nav-link me-1">Registrarse</Link>
           </Nav>
         </Navbar.Collapse>

@@ -12,3 +12,5 @@ export * from "./Ui/CardsRedondas.jsx";
 export * from "./Ui/Video.jsx";
 export * from "./pages/Administracion.jsx";
 export * from "./Ui/ItenTable.jsx";
+export * from "./Ui/Login.jsx";
+

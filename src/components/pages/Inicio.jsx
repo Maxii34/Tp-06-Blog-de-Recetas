@@ -1,12 +1,12 @@
 import { Container } from "react-bootstrap";
 import { Menu, Footer, Video, ContainerCardsR, ContainerCardsC } from "../index.jsx";
 
-export const Inicio = () => {
+export const Inicio = ({ handleShow }) => {
   return (
     <>
-      <Menu />
-      <Container fluid>
-        <main> 
+      <Menu handleShow={handleShow} />
+      <main>
+        <Container fluid>
           <Video />
           <ContainerCardsR />
           <section class="container bg-dark rounded-2">
@@ -23,8 +23,8 @@ export const Inicio = () => {
             </div>
           </section>
           <ContainerCardsC />
-        </main>
-      </Container>
+        </Container>
+      </main>
       <Footer />
     </>
   );
