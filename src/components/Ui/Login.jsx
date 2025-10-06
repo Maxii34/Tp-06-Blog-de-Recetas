@@ -1,5 +1,5 @@
 import { Button, Modal, Form } from "react-bootstrap";
-import { Link } from "react-router"
+import { Link } from "react-router";
 
 export const Login = ({ show, handleClose }) => {
   const cerrarModal = () => {
@@ -16,21 +16,18 @@ export const Login = ({ show, handleClose }) => {
           <p className="title">Iniciar sesión</p>
 
           <Form className="form">
-            <div className="input-group">
-              <Form.Label htmlFor="correo">Correo</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Ingrese su correo"
-              />
-            </div>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Correo</Form.Label>
+              <Form.Control type="email" placeholder="Ingrese su correo" />
+            </Form.Group>
 
-            <div className="input-group">
-              <Form.Label htmlFor="password">Contraseña</Form.Label>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Contraseña</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Ingrese su contraseña"
               />
-            </div>
+            </Form.Group>
 
             <div className="forgot">
               <Link to="#">¿Olvidaste tu contraseña?</Link>
