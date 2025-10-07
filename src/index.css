@@ -517,3 +517,34 @@ nav {
   color: #666;
   margin-top: 1rem;
 }
+/*Clase para el formulario de registro*/
+.borde-css {
+  border: 1px solid #ddd; 
+  border-radius: 12px;    
+  padding: 20px 25px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+  transition: all 0.3s ease-in-out; 
+  background-color: #fff;
+}
+
+.borde-css:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.19); 
+  border-color: #aaa; 
+}
+
+.img-css-registro {
+  width: 100%;
+  height: auto; 
+  max-height: 330px;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px 
+}
+.top-img {
+  margin-top: 64px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+  transition: all 0.3s ease-in-out; 
+}
+.top-img:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24); 
+}
