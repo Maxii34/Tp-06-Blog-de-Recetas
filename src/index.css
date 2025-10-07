@@ -220,7 +220,6 @@ nav {
   background-position: center;
   background-repeat: no-repeat;
   color: #f5f0e6;
-  /* Opcional: para que el div tenga altura y se note el fondo */
   min-height: 250px;
   display: flex;
   align-items: center;
@@ -407,8 +406,7 @@ nav {
 }
 
 .login-content {
-  padding: 1.5rem 2rem; /* Padding dentro del modal */
-  /* NO necesitamos background-color: #f7f7f7; aquí */
+  padding: 1.5rem 2rem;
   color: #333;
 }
 
@@ -418,16 +416,15 @@ nav {
   line-height: 2rem;
   font-weight: 700;
   color: #222324;
-  margin-bottom: 1.5rem; /* Agregamos un margen inferior */
+  margin-bottom: 1.5rem; 
 }
 
 .form {
-  /* margin-top: 1.5rem; <--- Ya no es necesario con el margin-bottom en .title */
   width: 100%;
 }
 
 .input-group {
-  margin-top: 1rem; /* Más espacio entre grupos de inputs */
+  margin-top: 1rem; 
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -443,14 +440,14 @@ nav {
   border-radius: 0.375rem;
   border: 1px solid #ccc;
   outline: 0;
-  background-color: #fff; /* Fondo blanco para los inputs */
+  background-color: #fff; 
   padding: 0.75rem 1rem;
   color: #333;
 }
 
 .input-group input:focus {
   border-color: #00698f;
-  box-shadow: 0 0 0 0.25rem rgba(0, 105, 143, 0.25); /* Un suave efecto de foco */
+  box-shadow: 0 0 0 0.25rem rgba(0, 105, 143, 0.25); 
 }
 
 .forgot {
@@ -459,7 +456,7 @@ nav {
   font-size: 0.75rem;
   line-height: 1rem;
   color: #666;
-  margin: 8px 0 16px 0; /* Más margen inferior para separarlo del botón Sign */
+  margin: 8px 0 16px 0; 
 }
 
 /* Estilo para el botón de inicio de sesión */
@@ -473,46 +470,39 @@ nav {
   border: none;
   border-radius: 0.375rem;
   font-weight: 600;
-  /* Importante para React-Bootstrap, asegura que sea un botón de bloque */
   line-height: 1.5;
 }
 
 .social-message {
   display: flex;
   align-items: center;
-  padding-top: 1.5rem; /* Más espacio */
+  padding-top: 1.5rem; 
 }
 
-/* ... (El resto de .line y .message se mantienen igual) ... */
 
 .social-icons {
   display: flex;
   justify-content: center;
-  margin-top: 1rem; /* Espacio superior */
+  margin-top: 1rem; 
 }
 
-/* *** MODIFICACIÓN CLAVE: 
-  Estilo para el botón de Google para que sea de ancho completo como en la imagen, 
-  pero con el texto a la izquierda.
-*/
 .social-btn-google {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centramos el contenido dentro del botón */
+  justify-content: center; 
   width: 100%;
-  background-color: #4285f4 !important; /* Color de Google */
+  background-color: #4285f4 !important; 
   color: #fff !important;
   border: none;
   padding: 0.75rem;
   border-radius: 0.375rem;
   font-weight: 600;
-  margin-bottom: 1.5rem; /* Espacio inferior */
+  margin-bottom: 1.5rem; 
 }
-/* El resto de estilos para .social-icons .icon y svg puedes eliminarlos si solo usas el botón de Google */
 
 .signup {
   text-align: center;
-  font-size: 0.875rem; /* Subimos un poco el tamaño */
+  font-size: 0.875rem;
   line-height: 1rem;
   color: #666;
   margin-top: 1rem;

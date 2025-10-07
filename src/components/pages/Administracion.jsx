@@ -18,7 +18,7 @@ export const Administracion = () => {
             </div>
 
             <div className="d-flex gap-2 flex-wrap mt-2 mt-md-0">
-              <Link to="#" className="btn btn-primary shadow">
+              <Link to="/formularioRecetas" className="btn btn-primary shadow">
                 <i className="bi bi-file-earmark-plus"></i>
               </Link>
               <Button type="button" variant="danger" className="shadow">
