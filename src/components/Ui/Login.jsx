@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
-export const Login = ({ show, handleClose, setlogin }) => {
+export const Login = ({ show, handleClose, setLogin }) => {
   const cerrarModal = () => {
     handleClose();
   };
@@ -19,14 +19,14 @@ export const Login = ({ show, handleClose, setlogin }) => {
 
 
   const onSubmit = (dataLogin) => {
-    console.log(dataLogin);
     //logica de login
     if (dataLogin.password === dataLogin.repeatpassword) {
       if (
         dataLogin.email === import.meta.env.VITE_API_EMAIL &&
         dataLogin.password === import.meta.env.VITE_API_PASSWORD
       ) {
-        setlogin(true);
+        setLogin(true);
+        console.log(setLogin);
         Swal.fire({
           title: "Bienvenido Administrador",
           text: "Iniciaste sesion correctamente.",
@@ -34,7 +34,6 @@ export const Login = ({ show, handleClose, setlogin }) => {
         });
         navegacion("/administracion");
         handleClose();
-        console.log(setlogin);
       } else {
         Swal.fire({
           title: "Ocurrio un error",

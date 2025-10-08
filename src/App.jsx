@@ -8,18 +8,25 @@ import {
   Register,
   FormularioRecetas,
 } from "./components/index.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 function App() {
+
+  const sesionUsuario = JSON.parse(localStorage.getItem("usuarioKey")) || false;
   //Estado del login.
-  const [login, setlogin] = useState(false);
+  const [login, setLogin] = useState(sesionUsuario);
+
+  useEffect(() => {
+    localStorage.setItem("usuarioKey", JSON.stringify(login));
+  }, [login]);
   //Estado del registro de usuarios.
   const [userRegister, setUserRegister] = useState([]);
   //Estado de las recetas creadas.
   const [recetas, setRecetas] = useState([]);
 
 
-  
+
   //estado  y funciones del modal.
   const [show, setShow] = useState(false);
 
@@ -29,10 +36,10 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Login handleClose={handleClose} show={show} setlogin={setlogin} />
+        <Login handleClose={handleClose} show={show} setLogin={setLogin} />
 
         <Routes>
-          <Route path="/" element={<Inicio handleShow={handleShow} />} />
+          <Route path="/" element={<Inicio handleShow={handleShow}  login={login} setLogin={setLogin} />} />
           <Route path="/recetas" element={<Recetas />} />
           <Route path="/administracion" element={<Administracion />} />
           <Route

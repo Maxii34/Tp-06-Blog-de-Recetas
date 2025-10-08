@@ -13,7 +13,7 @@ export const FormularioRecetas = ({ recetas, setRecetas }) => {
   } = useForm();
 
   const onSubmit = (dataRecetas) => {
-    // Lógica de registro
+    // Lógica de recetas
     if (dataRecetas) {
       Swal.fire({
         title: "Creaste tu Receta",
