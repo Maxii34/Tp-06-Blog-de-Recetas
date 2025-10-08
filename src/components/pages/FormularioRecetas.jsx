@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Menu, Footer } from "../index.jsx";
+import { Footer } from "../index.jsx";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -33,7 +33,6 @@ export const FormularioRecetas = ({ recetas, setRecetas }) => {
 
   return (
     <>
-      <Menu />
       <main>
         <div>
           <Container className="my-5">

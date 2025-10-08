@@ -2,13 +2,17 @@ import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router";
-
+import { Link, useNavigate } from "react-router";
 
 export const Menu = ({ handleShow, login, setLogin }) => {
-  const loginFalse = () => {
+
+  const navegacion = useNavigate();
+
+  const cerrarSesion = () => {
     setLogin(false);
+    navegacion("/");
   };
+
 
   return (
     <Navbar
@@ -36,7 +40,7 @@ export const Menu = ({ handleShow, login, setLogin }) => {
                 <Button
                   variant="link"
                   className="nav-link me-1"
-                  onClick={loginFalse}
+                  onClick={cerrarSesion}
                 >
                   Cerrar Sesión
                 </Button>

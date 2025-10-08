@@ -1,10 +1,9 @@
 import { Container } from "react-bootstrap";
-import { Menu, Footer, Video, ContainerCardsR, ContainerCardsC } from "../index.jsx";
+import { Footer, Video, ContainerCardsR, ContainerCardsC } from "../index.jsx";
 
-export const Inicio = ({ handleShow, login, setLogin }) => {
+export const Inicio = () => {
   return (
     <>
-      <Menu handleShow={handleShow} login={login} setLogin={setLogin} />
       <main>
         <Container fluid>
           <Video />

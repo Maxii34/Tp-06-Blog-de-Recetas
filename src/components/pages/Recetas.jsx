@@ -1,10 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { Menu, Footer, ContainerRecetas, CardsRedondas } from "../index.jsx";
+import { Footer, ContainerRecetas, CardsRedondas } from "../index.jsx";
 
 export const Recetas = () => {
   return (
     <>
-      <Menu />
       <main>
         <Container fluid>
           <section className="hero-section">

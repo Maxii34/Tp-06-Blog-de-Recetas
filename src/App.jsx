@@ -7,6 +7,7 @@ import {
   Login,
   Register,
   FormularioRecetas,
+  Menu,
 } from "./components/index.jsx";
 import { useEffect, useState } from "react";
 
@@ -37,9 +38,9 @@ function App() {
     <>
       <BrowserRouter>
         <Login handleClose={handleClose} show={show} setLogin={setLogin} />
-
+        <Menu handleShow={handleShow} login={login} setLogin={setLogin} />
         <Routes>
-          <Route path="/" element={<Inicio handleShow={handleShow}  login={login} setLogin={setLogin} />} />
+          <Route path="/" element={<Inicio />} />
           <Route path="/recetas" element={<Recetas />} />
           <Route path="/administracion" element={<Administracion />} />
           <Route

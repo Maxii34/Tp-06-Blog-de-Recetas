@@ -1,11 +1,10 @@
 import { Link } from "react-router";
-import { Menu, Footer, ItenTable } from "../index.jsx";
+import { Footer, ItenTable } from "../index.jsx";
 import { Button, Table } from "react-bootstrap";
 
 export const Administracion = () => {
   return (
     <>
-      <Menu />
       <main className="container">
         <section id="topLine" className="my-4">
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-md-items-center">
