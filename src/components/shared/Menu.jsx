@@ -31,7 +31,7 @@ export const Menu = ({ handleShow, login, setLogin }) => {
             </Link>
             {login === true? (
               <>
-                <Link to="/recetas" className="nav-link me-1">
+                <Link to="/administracion/recetas" className="nav-link me-1">
                   Recetas
                 </Link>
                 <Link to="/administracion" className="nav-link me-1">

@@ -10,7 +10,7 @@ import {
   Menu,
 } from "./components/index.jsx";
 import { useEffect, useState } from "react";
-
+import Protector from "./components/routes/Protector.jsx";
 
 function App() {
 
@@ -41,14 +41,25 @@ function App() {
         <Menu handleShow={handleShow} login={login} setLogin={setLogin} />
         <Routes>
           <Route path="/" element={<Inicio />} />
-          <Route path="/recetas" element={<Recetas />} />
-          <Route path="/administracion" element={<Administracion />} />
+          
+          {/* Rutas protejidas */}
+          <Route path="administracion" element={<Protector login={login} />}>
+          <Route index element={<Administracion />} />
+          <Route path="recetas" element={<Recetas />} />
           <Route
-            path="/formularioRecetas"
+            path="crear"
             element={
               <FormularioRecetas recetas={recetas} setRecetas={setRecetas} />
             }
           />
+          <Route
+            path="editar"
+            element={
+              <FormularioRecetas  />
+            }
+          />
+          
+          </Route>
           <Route
             path="/register"
             element={

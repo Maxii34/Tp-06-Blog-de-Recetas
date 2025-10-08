@@ -1,4 +1,6 @@
-import { Button, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router";
+
 
 export const ItenTable = () => {
   return (
@@ -15,9 +17,12 @@ export const ItenTable = () => {
           <Button variant="info" size="sm" className="text-light">
             Ver
           </Button>
-          <Button variant="warning" size="sm">
+          <Link
+            to={"/administracion/editar"}
+            className="btn btn-warning btn-sm"
+          >
             Editar
-          </Button>
+          </Link>
           <Button variant="danger" size="sm">
             Eliminar
           </Button>
