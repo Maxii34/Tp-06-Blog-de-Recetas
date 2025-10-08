@@ -4,12 +4,13 @@ import { Inicio, Recetas, Administracion, Login, Register, FormularioRecetas } f
 import { useState } from "react";
 
 function App() {
-
+//Estado del login.
 const [login, setlogin] = useState(false);
+//Estado del registro de usuarios.
+const [userRegister, setUserRegister] = useState([]);
+console.log(userRegister);
 
-
-
-
+//estado  y funciones del modal.
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -25,7 +26,7 @@ const [login, setlogin] = useState(false);
           <Route path="/recetas" element={<Recetas />} />
           <Route path="/administracion" element={<Administracion />} />
           <Route path="/formularioRecetas" element={<FormularioRecetas />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<Register setUserRegister={setUserRegister} userRegister={userRegister} />} />
           <Route path="*" element={""} />
         </Routes>
       </BrowserRouter>

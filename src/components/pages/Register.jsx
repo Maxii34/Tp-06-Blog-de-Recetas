@@ -1,8 +1,10 @@
 import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
 import { Menu, Footer } from "../index.jsx";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
-export const Register = () => {
+export const Register = ({ setUserRegister, userRegister }) => {
   const {
     register,
     handleSubmit,
@@ -10,12 +12,28 @@ export const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const navegacion = useNavigate();
+
   const onSubmit = (dataRegister) => {
     console.log(dataRegister);
-    reset();
+    // Lógica de registro
+    if (dataRegister.password === dataRegister.repeatpassword) {
+      Swal.fire({
+        title: "Bienvenido",
+        text: "Te registraste correctamente.",
+        icon: "success",
+      });
+      setUserRegister([...userRegister, dataRegister]);
+      reset();
+      navegacion("/");
+    } else {
+      Swal.fire({
+        title: "Ocurrio un error",
+        text: "Las Contraseñas no coinciden, intentalo nuevamente.",
+        icon: "error",
+      });
+    }
   };
-
-
 
   return (
     <>
@@ -46,7 +64,11 @@ export const Register = () => {
                       },
                     })}
                   />
-                  {errors.username && <span className="text-danger">{errors.username?.message}</span>}
+                  {errors.username && (
+                    <span className="text-danger">
+                      {errors.username?.message}
+                    </span>
+                  )}
                 </Form.Group>
 
                 {/* Campo: Correo Electrónico */}
@@ -64,7 +86,9 @@ export const Register = () => {
                       },
                     })}
                   />
-                  {errors.email && <span className="text-danger">{errors.email?.message}</span>}
+                  {errors.email && (
+                    <span className="text-danger">{errors.email?.message}</span>
+                  )}
                 </Form.Group>
 
                 {/* Campo: Contraseña */}
@@ -82,7 +106,11 @@ export const Register = () => {
                       },
                     })}
                   />
-                  {errors.password && <span className="text-danger">{errors.password?.message}</span>}
+                  {errors.password && (
+                    <span className="text-danger">
+                      {errors.password?.message}
+                    </span>
+                  )}
                 </Form.Group>
 
                 {/* Campo: Repetir Contraseña */}
@@ -102,7 +130,9 @@ export const Register = () => {
                   />
                 </Form.Group>
                 {errors.repeatpassword && (
-                  <span className="text-danger">{errors.repeatpassword?.message}</span>
+                  <span className="text-danger">
+                    {errors.repeatpassword?.message}
+                  </span>
                 )}
                 {/* Campo: Checkbox (Términos y Condiciones) */}
                 <Form.Group className="mb-3">
