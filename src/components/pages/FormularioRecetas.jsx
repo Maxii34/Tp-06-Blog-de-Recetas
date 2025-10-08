@@ -4,13 +4,32 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-export const FormularioRecetas = () => {
+export const FormularioRecetas = ({ recetas, setRecetas }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+
+  const onSubmit = (dataRecetas) => {
+    // Lógica de registro
+    if (dataRecetas) {
+      Swal.fire({
+        title: "Creaste tu Receta",
+        text: "creaste tu receta correctamente.",
+        icon: "success",
+      });
+      setRecetas([...recetas, dataRecetas]);
+    } else {
+      Swal.fire({
+        title: "Ocurrio un error",
+        text: "No se pudo crear tu receta, intentalo nuevamente.",
+        icon: "error",
+      });
+    }
+    reset();
+  };
 
   return (
     <>
@@ -24,7 +43,7 @@ export const FormularioRecetas = () => {
                   <h2 className="text-center mb-4">Crea tu Receta Maestra</h2>
                 </div>
 
-                <Form className="borde-css">
+                <Form className="borde-css" onSubmit={handleSubmit(onSubmit)}>
                   <Row className="mb-3">
                     <Col md={6}>
                       <Form.Group controlId="formRecipeName">
@@ -34,7 +53,7 @@ export const FormularioRecetas = () => {
                         <Form.Control
                           type="text"
                           placeholder="Ej: Lasaña Clásica"
-                          {...register("recipeName", {
+                          {...register("nombre", {
                             required:
                               "El nombre de la receta es un campo requerido",
                             minLength: {
@@ -49,9 +68,9 @@ export const FormularioRecetas = () => {
                             },
                           })}
                         />
-                        {errors.recipeName && (
+                        {errors.nombre && (
                           <span className="text-danger">
-                            {errors.recipeName.message}
+                            {errors.nombre.message}
                           </span>
                         )}
                       </Form.Group>
