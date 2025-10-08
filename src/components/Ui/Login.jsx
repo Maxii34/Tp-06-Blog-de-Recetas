@@ -1,8 +1,9 @@
 import { Button, Modal, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
-export const Login = ({ show, handleClose }) => {
+export const Login = ({ show, handleClose, setlogin }) => {
   const cerrarModal = () => {
     handleClose();
   };
@@ -14,10 +15,43 @@ export const Login = ({ show, handleClose }) => {
     formState: { errors },
   } = useForm();
 
-const onSubmit = (dataLogin) => {
-console.log(dataLogin);
-reset();
-}
+  const navegacion = useNavigate();
+
+
+  const onSubmit = (dataLogin) => {
+    console.log(dataLogin);
+    //logica de login
+    if (dataLogin.password === dataLogin.repeatpassword) {
+      if (
+        dataLogin.email === import.meta.env.VITE_API_EMAIL &&
+        dataLogin.password === import.meta.env.VITE_API_PASSWORD
+      ) {
+        setlogin(true);
+        Swal.fire({
+          title: "Bienvenido Administrador",
+          text: "Iniciaste sesion correctamente.",
+          icon: "success",
+        });
+        navegacion("/administracion");
+        handleClose();
+        console.log(setlogin);
+      } else {
+        Swal.fire({
+          title: "Ocurrio un error",
+          text: "Credenciales incorrectas",
+          icon: "error",
+        });
+      }
+      reset();
+      handleClose();
+    } else {
+      Swal.fire({
+        title: "Ocurrio un error",
+        text: "Las Contraseñas no coinciden, intentalo nuevamente.",
+        icon: "error",
+      });
+    }
+  };
 
   return (
     <>
@@ -43,9 +77,7 @@ reset();
                   },
                 })}
               />
-              {errors.email &&
-              <span>{errors.email?.message}</span>
-              }
+              {errors.email && <span>{errors.email?.message}</span>}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -62,9 +94,26 @@ reset();
                   },
                 })}
               />
-              {errors.password &&
-              <span>{errors.password?.message}</span>
-              }
+              {errors.password && <span>{errors.password?.message}</span>}
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Repetir Contraseña</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Ingrese su contraseña"
+                {...register("repeatpassword", {
+                  required: "La contraseña es un campo requerido",
+                  pattern: {
+                    value:
+                      /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
+                    message: "La clave es obligatoria",
+                  },
+                })}
+              />
+              {errors.repeatpassword && (
+                <span>{errors.repeatpassword?.message}</span>
+              )}
             </Form.Group>
 
             <div className="forgot">

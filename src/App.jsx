@@ -4,6 +4,12 @@ import { Inicio, Recetas, Administracion, Login, Register, FormularioRecetas } f
 import { useState } from "react";
 
 function App() {
+
+const [login, setlogin] = useState(false);
+
+
+
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -12,7 +18,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Login handleClose={handleClose} show={show} /> 
+        <Login handleClose={handleClose} show={show} setlogin={setlogin} /> 
 
         <Routes>
           <Route path="/" element={<Inicio handleShow={handleShow} />} />
