@@ -3,8 +3,10 @@ import { Footer } from "../index.jsx";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { v4 as uuidv4 } from "uuid";
 
-export const FormularioRecetas = ({ recetas, setRecetas }) => {
+
+export const FormularioRecetas = ({ titulo, crearRecetas}) => {
   const {
     register,
     handleSubmit,
@@ -12,24 +14,24 @@ export const FormularioRecetas = ({ recetas, setRecetas }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (dataRecetas) => {
-    // Lógica de recetas
-    if (dataRecetas) {
+const onSubmit = (dataRecetas) => {
+  // Lógica de recetas
+  if (titulo === "Crea tu Receta Maestra") {
+    dataRecetas.id = uuidv4();
+    if (crearRecetas(dataRecetas)) {
       Swal.fire({
-        title: "Creaste tu Receta",
-        text: "creaste tu receta correctamente.",
+        title: "Creaste una nueva Receta",
+        text: `creaste la receta ${dataRecetas.nombre} correctamente.`,
         icon: "success",
       });
-      setRecetas([...recetas, dataRecetas]);
     } else {
-      Swal.fire({
-        title: "Ocurrio un error",
-        text: "No se pudo crear tu receta, intentalo nuevamente.",
-        icon: "error",
-      });
+      // Logica de editar receta.
     }
-    reset();
-  };
+  }
+
+  reset();
+};
+
 
   return (
     <>
@@ -39,7 +41,7 @@ export const FormularioRecetas = ({ recetas, setRecetas }) => {
             <Row className="justify-content-md-center">
               <Col xs={12} md={9} lg={7}>
                 <div className=" border-1 border-bottom  border-dark my-4">
-                  <h2 className="text-center mb-4">Crea tu Receta Maestra</h2>
+                  <h2 className="text-center mb-4">{titulo}</h2>
                 </div>
 
                 <Form className="borde-css" onSubmit={handleSubmit(onSubmit)}>
