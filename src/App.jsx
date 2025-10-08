@@ -53,7 +53,7 @@ function App() {
             <Route
               path="crear"
               element={
-                <FormularioRecetas titulo="Crea tu Receta Maestra" crearRecetas={crearRecetas} />
+                <FormularioRecetas titulo="Crea una Receta Maestra" crearRecetas={crearRecetas} />
               }
             />
             <Route path="editar" element={<FormularioRecetas />} />

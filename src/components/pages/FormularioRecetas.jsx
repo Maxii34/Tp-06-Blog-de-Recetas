@@ -5,8 +5,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 
-
-export const FormularioRecetas = ({ titulo, crearRecetas}) => {
+export const FormularioRecetas = ({ titulo, crearRecetas }) => {
   const {
     register,
     handleSubmit,
@@ -14,24 +13,23 @@ export const FormularioRecetas = ({ titulo, crearRecetas}) => {
     formState: { errors },
   } = useForm();
 
-const onSubmit = (dataRecetas) => {
-  // Lógica de recetas
-  if (titulo === "Crea tu Receta Maestra") {
-    dataRecetas.id = uuidv4();
-    if (crearRecetas(dataRecetas)) {
-      Swal.fire({
-        title: "Creaste una nueva Receta",
-        text: `creaste la receta ${dataRecetas.nombre} correctamente.`,
-        icon: "success",
-      });
-    } else {
-      // Logica de editar receta.
+  const onSubmit = (dataRecetas) => {
+    // Lógica de recetas
+    if (titulo === "Crea una Receta Maestra") {
+      dataRecetas.id = uuidv4();
+      if (crearRecetas(dataRecetas)) {
+        Swal.fire({
+          title: "Creaste una nueva Receta",
+          text: `creaste la receta ${dataRecetas.nombre} correctamente.`,
+          icon: "success",
+        });
+      } else {
+        // Logica de editar receta.
+      }
     }
-  }
 
-  reset();
-};
-
+    reset();
+  };
 
   return (
     <>
