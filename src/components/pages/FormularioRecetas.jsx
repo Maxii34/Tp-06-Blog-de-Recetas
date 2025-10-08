@@ -1,8 +1,17 @@
 import { Link } from "react-router";
 import { Menu, Footer } from "../index.jsx";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 export const FormularioRecetas = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
   return (
     <>
       <Menu />
@@ -25,7 +34,26 @@ export const FormularioRecetas = () => {
                         <Form.Control
                           type="text"
                           placeholder="Ej: Lasaña Clásica"
+                          {...register("recipeName", {
+                            required:
+                              "El nombre de la receta es un campo requerido",
+                            minLength: {
+                              value: 3,
+                              message:
+                                "El nombre de la receta debe tener al menos 3 caracteres",
+                            },
+                            maxLength: {
+                              value: 50,
+                              message:
+                                "El nombre de la receta no puede superar los 50 caracteres",
+                            },
+                          })}
                         />
+                        {errors.recipeName && (
+                          <span className="text-danger">
+                            {errors.recipeName.message}
+                          </span>
+                        )}
                       </Form.Group>
                     </Col>
 
@@ -37,7 +65,21 @@ export const FormularioRecetas = () => {
                         <Form.Control
                           type="url"
                           placeholder="Pega el enlace de la imagen"
+                          {...register("imagen", {
+                            required: "La URL de la imagen es obligatoria",
+                            pattern: {
+                              value:
+                                /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i,
+                              message:
+                                "Debe ser una URL válida que termine en .jpg, .jpeg, .png, .gif o .webp",
+                            },
+                          })}
                         />
+                        {errors.imagen && (
+                          <span className="text-danger">
+                            {errors.imagen.message}
+                          </span>
+                        )}
                       </Form.Group>
                     </Col>
                   </Row>
@@ -52,10 +94,26 @@ export const FormularioRecetas = () => {
                           as="textarea"
                           rows={4}
                           placeholder="Un ingrediente por línea. Ej: 200g de harina, 1 huevo..."
+                          {...register("ingredientes", {
+                            required:
+                              "Los ingredientes son obligatorios para la receta",
+                            minLength: {
+                              value: 10,
+                              message:
+                                "Los ingredientes deben tener al menos 10 caracteres",
+                            },
+                            maxLength: {
+                              value: 500,
+                              message:
+                                "Los ingredientes no pueden superar los 300 caracteres",
+                            },
+                          })}
                         />
-                        <Form.Text className="text-muted">
-                          Sé específico con cantidades y unidades.
-                        </Form.Text>
+                        {errors.ingredientes && (
+                          <span className="text-danger">
+                            {errors.ingredientes.message}
+                          </span>
+                        )}
                       </Form.Group>
                     </Col>
                   </Row>
@@ -70,7 +128,25 @@ export const FormularioRecetas = () => {
                           as="textarea"
                           rows={6}
                           placeholder="Describe los pasos detalladamente..."
+                          {...register("preparacion", {
+                            required: "La preparación es obligatoria",
+                            minLength: {
+                              value: 20,
+                              message:
+                                "La preparación debe tener al menos 20 caracteres",
+                              maxLength: {
+                                value: 1000,
+                                message:
+                                  "La preparación no puede superar los 1000 caracteres",
+                              },
+                            },
+                          })}
                         />
+                        {errors.preparacion && (
+                          <span className="text-danger">
+                            {errors.preparacion.message}
+                          </span>
+                        )}
                       </Form.Group>
                     </Col>
                   </Row>
@@ -84,14 +160,20 @@ export const FormularioRecetas = () => {
                         <Form.Check
                           type="radio"
                           label="Normal"
-                          name="dietType"
+                          value="Normal"
                           id="dietNormal"
+                          {...register("dietType", {
+                            required: "Debes seleccionar un tipo de receta",
+                          })}
                         />
                         <Form.Check
                           type="radio"
                           label="Sin TACC (Gluten Free)"
-                          name="dietType"
+                          value="Sin TACC"
                           id="dietSinTacc"
+                          {...register("dietType", {
+                            required: "Debes seleccionar un tipo de receta",
+                          })}
                         />
                       </div>
                     </Col>
@@ -99,8 +181,16 @@ export const FormularioRecetas = () => {
                     <Col md={6}>
                       <Form.Group controlId="formCategory">
                         <Form.Label className="fw-bold">Categoría</Form.Label>
-                        <Form.Select aria-label="Seleccionar categoría de la receta">
-                          <option>Elige una categoría</option>
+                        <Form.Select
+                          aria-label="Seleccionar categoría de la receta"
+                          defaultValue=""
+                          {...register("categoria", {
+                            required: "Debes seleccionar una categoría",
+                            validate: (value) =>
+                              value !== "" || "Selecciona una categoría válida",
+                          })}
+                        >
+                          <option value="">Elige una categoría</option>
                           <option value="PastelesYTartas">
                             Pasteles y Tartas
                           </option>
@@ -118,6 +208,12 @@ export const FormularioRecetas = () => {
                             Repostería Vegana/Saludable
                           </option>
                         </Form.Select>
+
+                        {errors.categoria && (
+                          <span className="text-danger">
+                            {errors.categoria.message}
+                          </span>
+                        )}
                       </Form.Group>
                     </Col>
                   </Row>
@@ -126,7 +222,7 @@ export const FormularioRecetas = () => {
                     <Button
                       variant="success"
                       type="submit"
-                      className="me-3 text-nowrap" 
+                      className="me-3 text-nowrap"
                     >
                       Guardar Receta
                     </Button>
