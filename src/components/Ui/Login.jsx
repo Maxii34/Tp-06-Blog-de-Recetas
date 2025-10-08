@@ -77,7 +77,7 @@ export const Login = ({ show, handleClose, setlogin }) => {
                   },
                 })}
               />
-              {errors.email && <span>{errors.email?.message}</span>}
+              {errors.email && <span className="text-danger">{errors.email?.message}</span>}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -94,7 +94,7 @@ export const Login = ({ show, handleClose, setlogin }) => {
                   },
                 })}
               />
-              {errors.password && <span>{errors.password?.message}</span>}
+              {errors.password && <span className="text-danger">{errors.password?.message}</span>}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -112,7 +112,7 @@ export const Login = ({ show, handleClose, setlogin }) => {
                 })}
               />
               {errors.repeatpassword && (
-                <span>{errors.repeatpassword?.message}</span>
+                <span className="text-danger">{errors.repeatpassword?.message}</span>
               )}
             </Form.Group>
 
