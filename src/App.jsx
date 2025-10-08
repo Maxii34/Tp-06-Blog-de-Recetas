@@ -12,8 +12,8 @@ import {
 import { useEffect, useState } from "react";
 import Protector from "./components/routes/Protector.jsx";
 
-function App() {
 
+function App() {
   const sesionUsuario = JSON.parse(localStorage.getItem("usuarioKey")) || false;
   //Estado del login.
   const [login, setLogin] = useState(sesionUsuario);
@@ -25,8 +25,12 @@ function App() {
   const [userRegister, setUserRegister] = useState([]);
   //Estado de las recetas creadas.
   const [recetas, setRecetas] = useState([]);
+  console.log(recetas);
 
-
+  const crearRecetas = (nuevaReceta) => {
+    setRecetas([...recetas, nuevaReceta]);
+    return true;
+  };
 
   //estado  y funciones del modal.
   const [show, setShow] = useState(false);
@@ -41,24 +45,18 @@ function App() {
         <Menu handleShow={handleShow} login={login} setLogin={setLogin} />
         <Routes>
           <Route path="/" element={<Inicio />} />
-          
+
           {/* Rutas protejidas */}
           <Route path="administracion" element={<Protector login={login} />}>
-          <Route index element={<Administracion />} />
-          <Route path="recetas" element={<Recetas />} />
-          <Route
-            path="crear"
-            element={
-              <FormularioRecetas recetas={recetas} setRecetas={setRecetas} />
-            }
-          />
-          <Route
-            path="editar"
-            element={
-              <FormularioRecetas  />
-            }
-          />
-          
+            <Route index element={<Administracion />} />
+            <Route path="recetas" element={<Recetas />} />
+            <Route
+              path="crear"
+              element={
+                <FormularioRecetas titulo="Crea una Receta Maestra" crearRecetas={crearRecetas} />
+              }
+            />
+            <Route path="editar" element={<FormularioRecetas />} />
           </Route>
           <Route
             path="/register"
