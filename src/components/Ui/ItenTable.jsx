@@ -20,17 +20,17 @@ export const ItenTable = ({ fila, itenReceta }) => {
       <td>{itenReceta.dietType}</td>
       <td>
         <div className="d-flex justify-content-center gap-1">
-          <Button variant="info" size="sm" className="text-light">
-            Ver
+          <Button variant="info" size="sm" className="text-light text-center">
+            <i className="bi bi-eye"></i>
           </Button>
           <Link
             to={"/administracion/editar"}
             className="btn btn-warning btn-sm"
           >
-            Editar
+            <i className="bi bi-pencil-square"></i>
           </Link>
           <Button variant="danger" size="sm">
-            Eliminar
+            <i className="bi bi-trash"></i>
           </Button>
         </div>
       </td>

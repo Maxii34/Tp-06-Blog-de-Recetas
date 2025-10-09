@@ -1,13 +1,13 @@
 import { Container } from "react-bootstrap";
 import { Footer, Video, ContainerCardsR, ContainerCardsC } from "../index.jsx";
 
-export const Inicio = () => {
+export const Inicio = ({ recetas }) => {
   return (
     <>
       <main>
         <Container fluid>
           <Video />
-          <ContainerCardsR />
+          <ContainerCardsR recetas={recetas} />
           <section className="container bg-dark rounded-2">
             <div className="my-3">
               <h3 className="text-center py-4 text-light display-6 shadow">

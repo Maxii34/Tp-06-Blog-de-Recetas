@@ -44,7 +44,7 @@ function App() {
         <Login handleClose={handleClose} show={show} setLogin={setLogin} />
         <Menu handleShow={handleShow} login={login} setLogin={setLogin} />
         <Routes>
-          <Route path="/" element={<Inicio />} />
+          <Route path="/" element={<Inicio recetas={recetas} />} />
 
           {/* Rutas protejidas */}
           <Route path="administracion" element={<Protector login={login} />}>

@@ -27,13 +27,10 @@ export const Administracion = ({ recetas }) => {
             <div className="d-flex gap-2 flex-wrap mt-2 mt-md-0">
               <Link
                 to="/administracion/crear"
-                className="btn btn-primary shadow"
+                className="btn btn-success btn-md shadow"
               >
-                <i className="bi bi-file-earmark-plus"></i>
+                <i className="bi bi-file-earmark-plus"></i>  Agregar
               </Link>
-              <Button type="button" variant="danger" className="shadow">
-                <i className="bi bi-trash"></i>
-              </Button>
             </div>
           </div>
 
