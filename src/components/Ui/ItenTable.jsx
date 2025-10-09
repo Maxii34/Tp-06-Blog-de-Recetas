@@ -1,17 +1,23 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router";
 
-
-export const ItenTable = () => {
+export const ItenTable = ({ fila, itenReceta }) => {
   return (
     <tr>
-      <td>1</td>
-      <td>Alfajores</td>
-      <td>Leche, Maicena...</td>
-      <td>imagen.jpg</td>
-      <td>Postre</td>
-      <td>Batir, mezclar...</td>
-      <td>Sin TACC</td>
+      <td>{fila}</td>
+      <td>{itenReceta.nombre}</td>
+      <td>{itenReceta.ingredientes}</td>
+      <td>
+        <img
+          src={itenReceta.imagen || null}
+          className="img-fluid rounded table-img"
+          alt="imagen"
+          style={{ width: "80px", height: "80px", objectFit: "cover" }}
+          loading="lazy"
+        />
+      </td>
+      <td>{itenReceta.categoria}</td>
+      <td>{itenReceta.dietType}</td>
       <td>
         <div className="d-flex justify-content-center gap-1">
           <Button variant="info" size="sm" className="text-light">
