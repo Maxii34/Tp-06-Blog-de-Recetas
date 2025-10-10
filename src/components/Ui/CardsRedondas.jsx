@@ -6,7 +6,7 @@ export const CardsRedondas = ({ itemCategorias }) => {
   return (
     <Container>
       <div className="div-options">
-        <Link to="" className="text-reset text-decoration-none">
+        <Link to="/administracion/recetas" className="text-reset text-decoration-none">
           <img
             src={itemCategorias.imagen}
             className="img-options cards"

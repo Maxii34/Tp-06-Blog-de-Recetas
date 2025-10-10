@@ -25,22 +25,10 @@ export const Recetas = () => {
           </div>
           <ContainerRecetas />
           <div>
-            <h3 class="text-center py-4 text-dark display-6">
+            <h3 className="text-center py-4 text-dark display-6">
               -Otras recetas que te pueden interesar-
             </h3>
-            <div className="">
-              <Row className="justify-content-center">
-                <Col xs={12} sm={6} md={4} lg={3} className="my-3">
-                  <CardsRedondas />
-                </Col>
-                <Col xs={12} sm={6} md={4} lg={3} className="my-3">
-                  <CardsRedondas />
-                </Col>
-                <Col xs={12} sm={6} md={4} lg={3} className="my-3">
-                  <CardsRedondas />
-                </Col>
-              </Row>
-            </div>
+
           </div>
         </Container>
       </main>
