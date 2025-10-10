@@ -8,7 +8,7 @@ export const Inicio = ({ recetas }) => {
         <Container fluid>
           <Video />
           <div>
-          {/*CardsRedondas  fijas para el inicio. */}
+          {/*CardsRedondas estaticas para el inicio, puede cambiar a dinamicas. */}
           <h1 className="text-center display-5 my-5">- Elegí qué querés cocinar -</h1>
           <ContainerCardsR /> 
           </div>
@@ -22,10 +22,10 @@ export const Inicio = ({ recetas }) => {
           </section>
           <section className="my-2">
             <div>
-              <h3 className="text-center py-4 text-dark display-6">Otras recetas que te pueden interesar</h3>
+              <h3 className="text-center py-4 text-dark display-6">Otras recetas que te pueden interesar.</h3>
             </div>
           </section>
-          <ContainerCardsC />
+          <ContainerCardsC recetas={recetas} />
         </Container>
       </main>
       <Footer />
