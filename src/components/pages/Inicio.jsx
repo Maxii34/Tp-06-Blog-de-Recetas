@@ -7,7 +7,11 @@ export const Inicio = ({ recetas }) => {
       <main>
         <Container fluid>
           <Video />
-          <ContainerCardsR recetas={recetas} />
+          <div>
+          {/*CardsRedondas  fijas para el inicio. */}
+          <h1 className="text-center display-5 my-5">- Elegí qué querés cocinar -</h1>
+          <ContainerCardsR /> 
+          </div>
           <section className="container bg-dark rounded-2">
             <div className="my-3">
               <h3 className="text-center py-4 text-light display-6 shadow">

@@ -21,11 +21,21 @@ function App() {
   useEffect(() => {
     localStorage.setItem("usuarioKey", JSON.stringify(login));
   }, [login]);
+
+
   //Estado del registro de usuarios.
   const [userRegister, setUserRegister] = useState([]);
+
+  const recetasStorage = JSON.parse(localStorage.getItem("recetasKey")) || [];
+
   //Estado de las recetas creadas.
-  const [recetas, setRecetas] = useState([]);
+  const [recetas, setRecetas] = useState(recetasStorage);
   console.log(recetas);
+
+  useEffect(() => {
+    localStorage.setItem("recetasKey", JSON.stringify(recetas));
+  }, [recetas]);
+
 
   const crearRecetas = (nuevaReceta) => {
     setRecetas([...recetas, nuevaReceta]);
