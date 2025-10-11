@@ -30,7 +30,6 @@ function App() {
 
   //Estado de las recetas creadas.
   const [recetas, setRecetas] = useState(recetasStorage);
-  console.log(recetas);
 
   useEffect(() => {
     localStorage.setItem("recetasKey", JSON.stringify(recetas));
