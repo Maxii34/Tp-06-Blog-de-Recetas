@@ -4,8 +4,9 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
+import { useRecetas } from "../Context/RecetasContext.jsx";
 
-export const FormularioRecetas = ({ titulo, crearRecetas }) => {
+export const FormularioRecetas = ({ titulo }) => {
   const {
     register,
     handleSubmit,
@@ -13,11 +14,14 @@ export const FormularioRecetas = ({ titulo, crearRecetas }) => {
     formState: { errors },
   } = useForm();
 
+  const { crearReceta } = useRecetas();
+
+
   const onSubmit = (dataRecetas) => {
     // Lógica de recetas
     if (titulo === "Crea una Receta Maestra") {
       dataRecetas.id = uuidv4();
-      if (crearRecetas(dataRecetas)) {
+      if (crearReceta(dataRecetas)) {
         Swal.fire({
           title: "Creaste una nueva Receta",
           text: `creaste la receta ${dataRecetas.nombre} correctamente.`,
@@ -27,7 +31,6 @@ export const FormularioRecetas = ({ titulo, crearRecetas }) => {
         // Logica de editar receta.
       }
     }
-
     reset();
   };
 

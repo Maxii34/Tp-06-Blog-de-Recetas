@@ -1,8 +1,9 @@
 import { Link } from "react-router";
 import { Footer, ItenTable } from "../index.jsx";
 import { Button, Table } from "react-bootstrap";
+import { useRecetas } from "../Context/RecetasContext.jsx";
 
-export const Administracion = ({ recetas }) => {
+export const Administracion = () => {
   //  Función para cortar texto
   const cortarTexto = (texto, limite) => {
     if (texto && texto.length > limite) {
@@ -10,6 +11,8 @@ export const Administracion = ({ recetas }) => {
     }
     return texto;
   };
+
+  const { recetas } = useRecetas();
 
   return (
     <>
