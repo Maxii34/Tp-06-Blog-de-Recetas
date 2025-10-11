@@ -149,7 +149,7 @@ export const FormularioRecetas = ({ titulo, crearRecetas }) => {
                           {...register("preparacion", {
                             required: "La preparación es obligatoria",
                             minLength: {
-                              value: 20,
+                              value: 10,
                               message:
                                 "La preparación debe tener al menos 20 caracteres",
                               maxLength: {
@@ -186,8 +186,8 @@ export const FormularioRecetas = ({ titulo, crearRecetas }) => {
                         />
                         <Form.Check
                           type="radio"
-                          label="Sin TACC (Gluten Free)"
-                          value="Sin TACC"
+                          label="Sin tac"
+                          value="Sin tac"
                           id="dietSinTacc"
                           {...register("dietType", {
                             required: "Debes seleccionar un tipo de receta",
@@ -209,22 +209,13 @@ export const FormularioRecetas = ({ titulo, crearRecetas }) => {
                           })}
                         >
                           <option value="">Elige una categoría</option>
-                          <option value="PastelesYTartas">
-                            Pasteles y Tartas
-                          </option>
-                          <option value="Galletas">Galletas y Bizcochos</option>
-                          <option value="PostresFrios">
-                            Mousses y Postres Fríos
-                          </option>
-                          <option value="PanaderiaDulce">
-                            Panadería Dulce (Brioches, Rolls)
-                          </option>
-                          <option value="MasasYRellenos">
-                            Masas Base y Rellenos
-                          </option>
-                          <option value="Vegano">
-                            Repostería Vegana/Saludable
-                          </option>
+                          <option value="PastelesYTartas">Pasteles</option>
+                          <option value="PastelesYTartas">Tartas</option>
+                          <option value="Galletas">Galletas</option>
+                          <option value="Galletas">Bizcochos</option>
+                          <option value="PostresFrios">Postres Fríos</option>
+                          <option value="MasasYRellenos">Masas Base</option>
+                          <option value="MasasYRellenos">Rellenos</option>
                         </Form.Select>
 
                         {errors.categoria && (

@@ -11,7 +11,7 @@ export const CardsRecetas = () => {
           veniam, quis nostrud exercitation ullamco.
         </Card.Text>
         <div className="d-flex justify-content-center mt-5 shadow">
-        <Button variant="dark" className="w-100"><i class="bi bi-eye"></i> Ver más</Button>
+        <Button variant="dark" className="w-100"><i className="bi bi-eye"></i> Ver más</Button>
         </div>
       </Card.Body>
     </Card>

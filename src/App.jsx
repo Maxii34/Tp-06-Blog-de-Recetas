@@ -21,11 +21,21 @@ function App() {
   useEffect(() => {
     localStorage.setItem("usuarioKey", JSON.stringify(login));
   }, [login]);
+
+
   //Estado del registro de usuarios.
   const [userRegister, setUserRegister] = useState([]);
+
+  const recetasStorage = JSON.parse(localStorage.getItem("recetasKey")) || [];
+
   //Estado de las recetas creadas.
-  const [recetas, setRecetas] = useState([]);
+  const [recetas, setRecetas] = useState(recetasStorage);
   console.log(recetas);
+
+  useEffect(() => {
+    localStorage.setItem("recetasKey", JSON.stringify(recetas));
+  }, [recetas]);
+
 
   const crearRecetas = (nuevaReceta) => {
     setRecetas([...recetas, nuevaReceta]);
@@ -44,11 +54,11 @@ function App() {
         <Login handleClose={handleClose} show={show} setLogin={setLogin} />
         <Menu handleShow={handleShow} login={login} setLogin={setLogin} />
         <Routes>
-          <Route path="/" element={<Inicio />} />
+          <Route path="/" element={<Inicio recetas={recetas} />} />
 
           {/* Rutas protejidas */}
           <Route path="administracion" element={<Protector login={login} />}>
-            <Route index element={<Administracion />} />
+            <Route index element={<Administracion recetas={recetas} />} />
             <Route path="recetas" element={<Recetas />} />
             <Route
               path="crear"

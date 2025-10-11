@@ -9,28 +9,6 @@ export const ContainerRecetas = () => {
           <Col xs={12} sm={6} md={3} lg={3}>
             <CardsRecetas />
           </Col>
-          <Col xs={12} sm={6} md={3} lg={3}>
-            <CardsRecetas />
-          </Col>
-          <Col xs={12} sm={6} md={3} lg={3}>
-            <CardsRecetas />
-          </Col>
-          <Col xs={12} sm={6} md={3} lg={3}>
-            <CardsRecetas />
-          </Col>
-          <Col xs={12} sm={6} md={3} lg={3}>
-            <CardsRecetas />
-          </Col>
-          <Col xs={12} sm={6} md={3} lg={3}>
-            <CardsRecetas />
-          </Col>
-          <Col xs={12} sm={6} md={3} lg={3}>
-            <CardsRecetas />
-          </Col>
-          <Col xs={12} sm={6} md={3} lg={3}>
-            <CardsRecetas />
-          </Col>
-
         </Row>
       </Container>
     </div>
