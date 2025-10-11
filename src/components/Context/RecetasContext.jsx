@@ -5,7 +5,7 @@ const RecetasContext = createContext();
 export const useRecetas = () => {
   const context = useContext(RecetasContext);
   if (!context) {
-    throw new Error("useRecetas debe usarse dentro de un RecetasProvider");
+    throw new Error("useRecetas solo se puede usar dentro de un RecetasProvider");
   }
   return context;
 };
