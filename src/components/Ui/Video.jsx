@@ -4,6 +4,7 @@ export const Video = () => {
       <img
         src="https://images.pexels.com/photos/13918183/pexels-photo-13918183.jpeg" 
         alt="Tortas & Co."
+        loading="lazy"
         style={{
           width: "100%",
           height: "100vh",
