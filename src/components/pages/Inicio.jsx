@@ -18,13 +18,13 @@ export const Inicio = () => {
             </div>
 
             <section className="my-2">
-              <div className="my-3 container bg-dark rounded-2">
-                <h3 className="text-center py-4 text-light display-6 shadow">
+              <div className="my-3 container bg-dark rounded-2 shadow">
+                <h3 className="text-center py-4 text-light display-6">
                   Transforma ingredientes en emociones... <br />
                   !Cada bocado cuenta una historia¡
                 </h3>
               </div>
-              <div className="container bg-dark-subtle">
+              <div className="container bg-dark-subtle shadow py-2 border-1 border-black">
                 <h2 className=" text-center">Escuela del Sabor Dulce</h2>
 
                 <div>
@@ -37,7 +37,7 @@ export const Inicio = () => {
                   </p>
 
                   <p>
-                    "Tortas & Co" es el blog ideal para todos los amantes de la
+                    "<b>Tortas & Co</b>" es el blog ideal para todos los amantes de la
                     repostería. Aquí aprenderás técnicas, secretos, recetas y
                     consejos para convertirte en un verdadero maestro pastelero
                     desde casa. Prepárate para endulzar tu cocina con tortas,
@@ -92,7 +92,7 @@ export const Inicio = () => {
 
                 <div>
                   <p>
-                    Explora cada categoría o utiliza el buscador para descubrir
+                    Explora cada categoría para descubrir
                     recetas irresistibles, ideas creativas y contenido que hará
                     brillar tus postres. ¡Tu aventura repostera comienza aquí!
                   </p>
