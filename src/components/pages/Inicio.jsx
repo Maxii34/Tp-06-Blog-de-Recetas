@@ -7,8 +7,8 @@ export const Inicio = () => {
     <>
       <RecetasProvider>
         <main>
-          <Container fluid>
             <Video />
+          <Container fluid>
             <div>
               {/*CardsRedondas estaticas para el inicio, puede cambiar a dinamicas. */}
               <h1 className="text-center display-5 my-5">

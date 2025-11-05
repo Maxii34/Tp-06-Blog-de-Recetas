@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Footer, ItenTable } from "../index.jsx";
-import { Button, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { useRecetas } from "../Context/RecetasContext.jsx";
 
 export const Administracion = () => {
