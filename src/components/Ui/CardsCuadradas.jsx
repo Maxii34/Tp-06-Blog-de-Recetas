@@ -1,7 +1,7 @@
 import { Button, Card } from "react-bootstrap";
 import "./../Ui/Cards.css";
 
-export const CardsCuadradas = ({ itemReceta}) => {
+export const CardsCuadradas = ({ itemReceta }) => {
   return (
     <Card className="cards1">
       {itemReceta.imagen ? (

@@ -4,12 +4,14 @@ import { useRecetas } from "./Context/RecetasContext.jsx";
 
 export const ContainerCardsC = () => {
   const { recetas } = useRecetas();
+
+
   return (
     <div className="d-flex justify-content-center">
       <Container fluid>
         <Row className="g-3 d-flex justify-content-center">
           {recetas.map((itemReceta) => (
-            <Col xs={12} sm={6} md={4} lg={3} key={itemReceta.id}>
+            <Col xs={12} sm={6} md={4} lg={3} key={itemReceta._id}>
               <CardsCuadradas itemReceta={itemReceta} />
             </Col>
           ))}
