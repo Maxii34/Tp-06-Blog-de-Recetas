@@ -27,3 +27,20 @@ export const crearReceta = async (receta)=>{
         return null
     }
 }
+
+export const editarRecetaId = async (id, receta)=>{
+    try {
+        const respuesta = await fetch(`${recetasBackend}/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(receta)
+        })
+        console.log(respuesta)
+        return respuesta
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}
