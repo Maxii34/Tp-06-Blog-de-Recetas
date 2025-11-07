@@ -212,13 +212,13 @@ export const FormularioRecetas = ({ titulo }) => {
                           })}
                         >
                           <option value="">Elige una categoría</option>
-                          <option value="PastelesYTartas">Pasteles</option>
-                          <option value="PastelesYTartas">Tartas</option>
+                          <option value="Alfajores">Alfajores</option>
+                          <option value="Muffins">Muffins</option>
+                          <option value="Tortas y tartas">Tortas y tartas</option>
+                          <option value="Postres">Postres</option>
+                          <option value="Para el te">Para el te</option>
                           <option value="Galletas">Galletas</option>
-                          <option value="Galletas">Bizcochos</option>
-                          <option value="PostresFrios">Postres Fríos</option>
-                          <option value="MasasYRellenos">Masas Base</option>
-                          <option value="MasasYRellenos">Rellenos</option>
+                          <option value="Otras recetas">Otras recetas</option>
                         </Form.Select>
 
                         {errors.categoria && (
