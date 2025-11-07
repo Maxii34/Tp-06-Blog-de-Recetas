@@ -75,7 +75,7 @@ export const Administracion = () => {
 
                 return (
                   <ItenTable
-                    key={itenReceta.id}
+                    key={itenReceta._id}
                     itenReceta={itenRecetaCorto}
                     fila={index + 1}
                   />

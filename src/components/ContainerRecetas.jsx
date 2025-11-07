@@ -1,25 +1,10 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { CardsRecetas } from "./index.jsx";
-import { useEffect, useState } from "react";
-import { listarRecetas } from "./helpers/queries.js";
+import { useRecetas } from "./Context/RecetasContext.jsx";
 
 export const ContainerRecetas = () => {
-  const [recetas, setRecetas] = useState([]);
 
-  useEffect(() => {
-    cargarRecetas();
-  }, []);
-
-  const cargarRecetas = async () => {
-    //Se solicita los datos al backend, con la funcion listarRecetas()
-    const respuesta = await listarRecetas();
-    //Se verifican los datos recibidos
-    if (respuesta.status === 200) {
-      const data = await respuesta.json();
-      //Cargarlo al estado
-      setRecetas(data);
-    }
-  };
+  const { recetas } = useRecetas();
 
   return (
     <div className="my-4 d-flex justify-content-center">

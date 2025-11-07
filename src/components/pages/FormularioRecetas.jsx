@@ -3,8 +3,8 @@ import { Footer } from "../index.jsx";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { v4 as uuidv4 } from "uuid";
-import { useRecetas } from "../Context/RecetasContext.jsx";
+import { crearReceta } from "../helpers/queries.js";
+
 
 export const FormularioRecetas = ({ titulo }) => {
   const {
@@ -14,24 +14,30 @@ export const FormularioRecetas = ({ titulo }) => {
     formState: { errors },
   } = useForm();
 
-  const { crearReceta } = useRecetas();
 
-
-  const onSubmit = (dataRecetas) => {
-    // Lógica de recetas
+  const onSubmit = async (data) => {
+    // Lógica de crear recetas
     if (titulo === "Crea una Receta Maestra") {
-      dataRecetas.id = uuidv4();
-      if (crearReceta(dataRecetas)) {
+      const respuesta = await crearReceta(data);
+      console.log(respuesta);
+      if (respuesta.status === 201){
         Swal.fire({
-          title: "Creaste una nueva Receta",
-          text: `creaste la receta ${dataRecetas.nombre} correctamente.`,
+          title: "Receta creada",
+          text: `La receta ${data.nombre} se creo correctamente`,
           icon: "success",
         });
+        reset();
       } else {
-        // Logica de editar receta.
+        //mensaje de error
+        Swal.fire({
+          title: "Ocurrio un error",
+          text: `No se pudo crear la receta.`,
+          icon: "error",
+        });
       }
+    } else {
+      //Agregar aki logica para editar recetas
     }
-    reset();
   };
 
   return (

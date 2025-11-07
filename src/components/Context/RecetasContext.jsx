@@ -1,35 +1,39 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { listarRecetas } from "../helpers/queries";
 //Se crea el contexto
 const RecetasContext = createContext();
 
 export const useRecetas = () => {
   const context = useContext(RecetasContext);
   if (!context) {
-    throw new Error("useRecetas solo se puede usar dentro de un RecetasProvider");
+    throw new Error(
+      "useRecetas solo se puede usar dentro de un RecetasProvider"
+    );
   }
   return context;
 };
 
 // Proveedor del contexto
 export const RecetasProvider = ({ children }) => {
-  // Cargar recetas desde localStorage al iniciar
-  const recetasStorage = JSON.parse(localStorage.getItem("recetasKey")) || [];
+  const [recetas, setRecetas] = useState([]);
 
-  const [recetas, setRecetas] = useState(recetasStorage);
-
-  // Guardar en localStorage cuando cambien las recetas
   useEffect(() => {
-    localStorage.setItem("recetasKey", JSON.stringify(recetas));
-  }, [recetas]);
+    cargarRecetas();
+  }, []);
 
-  // Función para crear una nueva receta
-  const crearReceta = (nuevaReceta) => {
-    setRecetas([...recetas, nuevaReceta]);
-    return true;
+  const cargarRecetas = async () => {
+    //Se solicita los datos al backend, con la funcion listarRecetas()
+    const respuesta = await listarRecetas();
+    //Se verifican los datos recibidos
+    if (respuesta.status === 200) {
+      const data = await respuesta.json();
+      //Cargarlo al estado
+      setRecetas(data);
+    }
   };
-  // Puedes agregar más funciones aquí si necesitas editar, eliminar, etc.
+
   return (
-    <RecetasContext.Provider value={{ recetas, crearReceta }}>
+    <RecetasContext.Provider value={{ recetas }}>
       {children}
     </RecetasContext.Provider>
   );
