@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Footer, ItenTable } from "../index.jsx";
+import { Footer, ItenTable, ModalAdminVer } from "../index.jsx";
 import { Table } from "react-bootstrap";
 import { useRecetas } from "../Context/RecetasContext.jsx";
 
@@ -8,6 +8,7 @@ export const Administracion = () => {
 
   return (
     <>
+      <ModalAdminVer />
       <main className="container">
         <section id="topLine" className="my-4">
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-md-items-center">

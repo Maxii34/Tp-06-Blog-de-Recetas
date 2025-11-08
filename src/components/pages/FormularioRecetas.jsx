@@ -30,7 +30,7 @@ export const FormularioRecetas = ({ titulo }) => {
 
   const navegacion = useNavigate();
 
-  //Si tiene el titulo correcto busca la receta y la carga en el formulario
+  //Si tiene el titulo, correcto busca la receta y la carga en el formulario.
   const buscarReceta = async () => {
     if (titulo === "Editar receta") {
       console.log(id);

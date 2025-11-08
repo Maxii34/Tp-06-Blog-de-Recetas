@@ -32,8 +32,14 @@ export const RecetasProvider = ({ children }) => {
     }
   };
 
+  //Estados para el modal de ver receta
+  const [smShow, setSmShow] = useState(false);
+  const [lgShow, setLgShow] = useState(false);
+
   return (
-    <RecetasContext.Provider value={{ recetas, setRecetas, cargarRecetas }}>
+    <RecetasContext.Provider
+      value={{ recetas, setRecetas, cargarRecetas, setSmShow, setLgShow, smShow, lgShow}}
+    >
       {children}
     </RecetasContext.Provider>
   );

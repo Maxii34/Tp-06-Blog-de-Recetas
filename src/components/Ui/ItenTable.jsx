@@ -5,7 +5,7 @@ import { borrarReceta } from "../helpers/queries";
 import { useRecetas } from "../Context/RecetasContext";
 
 export const ItenTable = ({ fila, itenReceta }) => {
-  const { cargarRecetas } = useRecetas();
+  const { cargarRecetas, setLgShow} = useRecetas();
 
   const eliminarRecetas = async () => {
   Swal.fire({
@@ -56,7 +56,7 @@ export const ItenTable = ({ fila, itenReceta }) => {
       <td>{itenReceta.dietType}</td>
       <td>
         <div className="d-flex justify-content-center gap-1">
-          <Button variant="info" size="sm" className="text-light text-center">
+          <Button variant="info" size="sm" onClick={() => setLgShow(true)} className="text-light text-center">
             <i className="bi bi-eye"></i>
           </Button>
           <Link
