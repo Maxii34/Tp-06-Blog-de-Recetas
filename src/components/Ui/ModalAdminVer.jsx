@@ -6,7 +6,7 @@ import { Col, Row } from "react-bootstrap";
 export const ModalAdminVer = () => {
   const { setLgShow, lgShow, recetaSelecionada } = useRecetas();
 
-  if (!recetaSelecionada) {
+  if (!recetaSelecionada || Object.keys(recetaSelecionada).length === 0) {
     return null;
   }
 
@@ -30,7 +30,7 @@ export const ModalAdminVer = () => {
                 <Card.Img
                   variant="top"
                   src={recetaSelecionada.imagen}
-                  className="w-100 h-100"
+                  className="w-100 h-100 object-fit-cover"
                   loading="lazy"
                 />
               </Col>

@@ -8,9 +8,9 @@ export const ItenTable = ({ fila, itenReceta }) => {
   const { cargarRecetas, setLgShow, setRecetasSeleccionada } = useRecetas();
 
   const abrirModal = () => {
-    setLgShow(true);
     setRecetasSeleccionada(itenReceta);
-    console.log(itenReceta);
+    setLgShow(true);
+    //console.log(itenReceta);
   };
 
   const eliminarRecetas = async () => {
