@@ -38,6 +38,8 @@ export const RecetasProvider = ({ children }) => {
   const [lgShow, setLgShow] = useState(false);
   //Estado para cargar receta elejida en ver (modal)
   const [recetaSelecionada, setRecetasSeleccionada] = useState({});
+  //Estado para cargar la receta a mostar en detalles.
+  const [recetaDetalle, setRecetasDetalle] = useState([])
 
   return (
     <RecetasContext.Provider
@@ -49,6 +51,8 @@ export const RecetasProvider = ({ children }) => {
         lgShow,
         recetaSelecionada,
         setRecetasSeleccionada,
+        recetaDetalle,
+        setRecetasDetalle
       }}
     >
       {children}

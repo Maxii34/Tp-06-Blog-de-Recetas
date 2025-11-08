@@ -81,7 +81,7 @@ export const FormularioRecetas = ({ titulo }) => {
           text: `La receta ${data.nombre} se edito correctamente`,
           icon: "success",
         });
-        navegacion("/administracion");
+        navegacion("/administracion/");
       } else {
         Swal.fire({
           title: "Ocurrio un error",

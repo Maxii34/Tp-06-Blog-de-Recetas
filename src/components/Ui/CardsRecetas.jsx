@@ -1,6 +1,7 @@
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { Link } from "react-router";
 
-export const CardsRecetas = ({ itemReceta }) => {
+export const CardsRecetas = ({ itemReceta }) => {  
   return (
     <Card className="cardc">
       <div className="overflow-hidden OVH">
@@ -16,9 +17,12 @@ export const CardsRecetas = ({ itemReceta }) => {
         <Card.Title as="h4" className="card-title">
           {itemReceta.nombre}
         </Card.Title>
-        <Button variant="dark" className="btn card-button">
+        <Link 
+          to={`/administracion/detalle/${itemReceta._id}`} 
+          className="btn card-button"
+        >
           Ver Receta
-        </Button>
+        </Link>
       </Card.Body>
     </Card>
   );

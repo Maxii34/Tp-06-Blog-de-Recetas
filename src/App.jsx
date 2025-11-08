@@ -44,7 +44,7 @@ function App() {
             <Route path="administracion" element={<Protector login={login} />}>
               <Route index element={<Administracion />} />
               <Route path="recetas" element={<Recetas />} />
-              <Route path="detalle" element={<DetalleRecetas />} />
+              <Route path="detalle/:_id" element={<DetalleRecetas />} />
               <Route
                 path="crear"
                 element={
