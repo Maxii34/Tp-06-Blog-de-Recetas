@@ -8,6 +8,7 @@ import {
   Register,
   FormularioRecetas,
   Menu,
+  DetalleRecetas
 } from "./components/index.jsx";
 import { useEffect, useState } from "react";
 import Protector from "./components/routes/Protector.jsx";
@@ -43,6 +44,7 @@ function App() {
             <Route path="administracion" element={<Protector login={login} />}>
               <Route index element={<Administracion />} />
               <Route path="recetas" element={<Recetas />} />
+              <Route path="detalle" element={<DetalleRecetas />} />
               <Route
                 path="crear"
                 element={

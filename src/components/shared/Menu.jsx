@@ -34,6 +34,9 @@ export const Menu = ({ handleShow, login, setLogin }) => {
                 <Link to="/administracion/recetas" className="nav-link me-1">
                   Recetas
                 </Link>
+                <Link to="/administracion/detalle" className="nav-link me-1">
+                  Detalles
+                </Link>
                 <Link to="/administracion" className="nav-link me-1">
                   Administración
                 </Link>
