@@ -1,11 +1,11 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
-import { borrarReceta, listarRecetas } from "../helpers/queries";
+import { borrarReceta } from "../helpers/queries";
 import { useRecetas } from "../Context/RecetasContext";
 
 export const ItenTable = ({ fila, itenReceta }) => {
-  const { setRecetas, cargarRecetas } = useRecetas();
+  const { cargarRecetas } = useRecetas();
 
   const eliminarRecetas = async () => {
   Swal.fire({
@@ -60,7 +60,7 @@ export const ItenTable = ({ fila, itenReceta }) => {
             <i className="bi bi-eye"></i>
           </Button>
           <Link
-            to={"/administracion/editar"}
+            to={`/administracion/editar/${itenReceta._id}`}
             className="btn btn-warning btn-sm"
           >
             <i className="bi bi-pencil-square"></i>

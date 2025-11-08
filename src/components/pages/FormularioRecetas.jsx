@@ -1,32 +1,68 @@
-import { Link } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { Footer } from "../index.jsx";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { crearReceta } from "../helpers/queries.js";
-
+import {
+  crearReceta,
+  editarRecetaId,
+  obtenerRecetaID,
+} from "../helpers/queries.js";
+import { useEffect } from "react";
+import { useRecetas } from "../Context/RecetasContext.jsx";
 
 export const FormularioRecetas = ({ titulo }) => {
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
+  const { id } = useParams();
 
+  const { cargarRecetas } = useRecetas();
+
+
+  useEffect(() => {
+    buscarReceta();
+  }, []);
+
+  const navegacion = useNavigate();
+
+  //Si tiene el titulo correcto busca la receta y la carga en el formulario
+  const buscarReceta = async () => {
+    if (titulo === "Editar receta") {
+      console.log(id);
+      const respuesta = await obtenerRecetaID(id);
+      if (respuesta.status === 200) {
+        const recetaBuscada = await respuesta.json();
+        console.log(recetaBuscada);
+        setValue("nombre", recetaBuscada.nombre);
+        setValue("imagen", recetaBuscada.imagen);
+        setValue("ingredientes", recetaBuscada.ingredientes);
+        setValue("preparacion", recetaBuscada.preparacion);
+        setValue("categoria", recetaBuscada.categoria);
+        setValue("dietType", recetaBuscada.dietType);
+      } else {
+        alert("No se encontro la receta");
+      }
+    }
+  };
 
   const onSubmit = async (data) => {
     // Lógica de crear recetas
     if (titulo === "Crea una Receta Maestra") {
       const respuesta = await crearReceta(data);
       console.log(respuesta);
-      if (respuesta.status === 201){
+      if (respuesta.status === 201) {
         Swal.fire({
           title: "Receta creada",
           text: `La receta ${data.nombre} se creo correctamente`,
           icon: "success",
         });
         reset();
+        cargarRecetas();
       } else {
         //mensaje de error
         Swal.fire({
@@ -36,7 +72,23 @@ export const FormularioRecetas = ({ titulo }) => {
         });
       }
     } else {
-      //Agregar aki logica para editar recetas
+      //Agregar aki logica para editar recetas.
+      const respuesta = await editarRecetaId(id, data);
+      console.log(respuesta);
+      if (respuesta.status === 200) {
+        Swal.fire({
+          title: "Receta modificado",
+          text: `La receta ${data.nombre} se edito correctamente`,
+          icon: "success",
+        });
+        navegacion("/administracion");
+      } else {
+        Swal.fire({
+          title: "Ocurrio un error",
+          text: `No se pudo editar la receta ${data.nombreProducto}`,
+          icon: "error",
+        });
+      }
     }
   };
 
@@ -210,7 +262,6 @@ export const FormularioRecetas = ({ titulo }) => {
                         <Form.Label className="fw-bold">Categoría</Form.Label>
                         <Form.Select
                           aria-label="Seleccionar categoría de la receta"
-                          defaultValue=""
                           {...register("categoria", {
                             required: "Debes seleccionar una categoría",
                             validate: (value) =>
@@ -220,7 +271,9 @@ export const FormularioRecetas = ({ titulo }) => {
                           <option value="">Elige una categoría</option>
                           <option value="Alfajores">Alfajores</option>
                           <option value="Muffins">Muffins</option>
-                          <option value="Tortas y tartas">Tortas y tartas</option>
+                          <option value="Tortas y tartas">
+                            Tortas y tartas
+                          </option>
                           <option value="Postres">Postres</option>
                           <option value="Para el te">Para el te</option>
                           <option value="Galletas">Galletas</option>

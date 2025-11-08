@@ -51,7 +51,7 @@ function App() {
                   />
                 }
               />
-              <Route path="editar" element={<FormularioRecetas />} />
+              <Route path="editar/:id" element={<FormularioRecetas titulo="Editar receta" />} />
             </Route>
             <Route
               path="/register"
