@@ -5,38 +5,44 @@ import { borrarReceta } from "../helpers/queries";
 import { useRecetas } from "../Context/RecetasContext";
 
 export const ItenTable = ({ fila, itenReceta }) => {
-  const { cargarRecetas, setLgShow} = useRecetas();
+  const { cargarRecetas, setLgShow, setRecetasSeleccionada } = useRecetas();
+
+  const abrirModal = () => {
+    setLgShow(true);
+    setRecetasSeleccionada(itenReceta);
+    console.log(itenReceta);
+  };
 
   const eliminarRecetas = async () => {
-  Swal.fire({
-    title: "¿Estas seguro de eliminar?",
-    text: "No se puede revertir este paso posteriormente",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#198754",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Borrar",
-    cancelButtonText: "Cancelar",
-  }).then(async (result) => {
-    if (result.isConfirmed) {
-      const respuesta = await borrarReceta(itenReceta._id);
-      if (respuesta.status === 200) {
-        Swal.fire({
-          title: "La receta fue eliminada",
-          text: `La receta ${itenReceta.nombre} fue eliminada correctamente`,
-          icon: "success",
-        });
-        await cargarRecetas();
-      } else {
-        Swal.fire({
-          title: "Ocurrió un error",
-          text: `La receta no pudo ser eliminada`,
-          icon: "error",
-        });
+    Swal.fire({
+      title: "¿Estas seguro de eliminar?",
+      text: "No se puede revertir este paso posteriormente",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#198754",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const respuesta = await borrarReceta(itenReceta._id);
+        if (respuesta.status === 200) {
+          Swal.fire({
+            title: "La receta fue eliminada",
+            text: `La receta ${itenReceta.nombre} fue eliminada correctamente`,
+            icon: "success",
+          });
+          await cargarRecetas();
+        } else {
+          Swal.fire({
+            title: "Ocurrió un error",
+            text: `La receta no pudo ser eliminada`,
+            icon: "error",
+          });
+        }
       }
-    }
-  });
-};
+    });
+  };
 
   return (
     <tr>
@@ -56,7 +62,12 @@ export const ItenTable = ({ fila, itenReceta }) => {
       <td>{itenReceta.dietType}</td>
       <td>
         <div className="d-flex justify-content-center gap-1">
-          <Button variant="info" size="sm" onClick={() => setLgShow(true)} className="text-light text-center">
+          <Button
+            variant="info"
+            size="sm"
+            onClick={abrirModal}
+            className="text-light text-center"
+          >
             <i className="bi bi-eye"></i>
           </Button>
           <Link
