@@ -4,19 +4,11 @@ import { Table } from "react-bootstrap";
 import { useRecetas } from "../Context/RecetasContext.jsx";
 
 export const Administracion = () => {
-  //  Función para cortar texto
-  const cortarTexto = (texto, limite) => {
-    if (texto && texto.length > limite) {
-      return texto.substring(0, limite) + "...";
-    }
-    return texto;
-  };
-
   const { recetas } = useRecetas();
 
   return (
     <>
-      <main className="container-fluid">
+      <main className="container">
         <section id="topLine" className="my-4">
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-md-items-center">
             <div className="mb-3 mb-md-0">
@@ -58,29 +50,21 @@ export const Administracion = () => {
               </tr>
             </thead>
             <tbody>
-              {recetas.map((itenReceta, index) => {
-                // funciones para recortar texto
-                const nombreCorto = cortarTexto(itenReceta.nombre, 10);
-                const ingredientesCortos = cortarTexto(
-                  itenReceta.ingredientes,
-                  10
-                );
-
-                // funcion para copiar el objeto de recetas y agregarle los textos acortados
-                const itenRecetaCorto = {
-                  ...itenReceta,
-                  ingredientes: ingredientesCortos,
-                  nombre: nombreCorto,
-                };
-
-                return (
+              {Array.isArray(recetas) && recetas.length > 0 ? (
+                recetas.map((itenReceta, index) => (
                   <ItenTable
                     key={itenReceta._id}
-                    itenReceta={itenRecetaCorto}
+                    itenReceta={itenReceta}
                     fila={index + 1}
                   />
-                );
-              })}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="7" className="text-center py-4">
+                    <p className="mb-0">No hay recetas disponibles</p>
+                  </td>
+                </tr>
+              )}
             </tbody>
           </Table>
         </section>

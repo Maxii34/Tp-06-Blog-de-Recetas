@@ -33,7 +33,7 @@ export const RecetasProvider = ({ children }) => {
   };
 
   return (
-    <RecetasContext.Provider value={{ recetas }}>
+    <RecetasContext.Provider value={{ recetas, setRecetas, cargarRecetas }}>
       {children}
     </RecetasContext.Provider>
   );
