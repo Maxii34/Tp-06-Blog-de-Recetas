@@ -7,7 +7,6 @@ import { Footer } from "../shared/Footer";
 export const DetalleRecetas = () => {
   const { _id } = useParams();
   const [recetaDetalle, setRecetaDetalle] = useState(null);
-  console.log(recetaDetalle);
 
   useEffect(() => {
     buscarReceta();
@@ -18,7 +17,6 @@ export const DetalleRecetas = () => {
     if (respuesta.status === 200) {
       const recetaBuscada = await respuesta.json();
       setRecetaDetalle(recetaBuscada);
-      console.log(recetaBuscada);
     } else {
       alert("No se encontró la receta");
     }

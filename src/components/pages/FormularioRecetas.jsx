@@ -33,11 +33,9 @@ export const FormularioRecetas = ({ titulo }) => {
   //Si tiene el titulo, correcto busca la receta y la carga en el formulario.
   const buscarReceta = async () => {
     if (titulo === "Editar receta") {
-      console.log(id);
       const respuesta = await obtenerRecetaID(id);
       if (respuesta.status === 200) {
         const recetaBuscada = await respuesta.json();
-        console.log(recetaBuscada);
         setValue("nombre", recetaBuscada.nombre);
         setValue("imagen", recetaBuscada.imagen);
         setValue("ingredientes", recetaBuscada.ingredientes);
