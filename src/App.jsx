@@ -8,26 +8,22 @@ import {
   Register,
   FormularioRecetas,
   Menu,
-  DetalleRecetas
+  DetalleRecetas,
 } from "./components/index.jsx";
 import { useEffect, useState } from "react";
 import Protector from "./components/routes/Protector.jsx";
 import { RecetasProvider } from "./components/Context/RecetasContext.jsx";
 
 function App() {
-  const sesionUsuario = JSON.parse(localStorage.getItem("usuarioKey")) || {
-  usuario: "",
-  token: ""
-};
+  const sesionUsuario = JSON.parse(sessionStorage.getItem("usuarioKey")) || {};
   //Estado del login.
   const [login, setLogin] = useState(sesionUsuario);
 
-  const [userRegister, setUserRegister] = useState([]);
-
   useEffect(() => {
-    localStorage.setItem("usuarioKey", JSON.stringify(login));
+    sessionStorage.setItem("usuarioKey", JSON.stringify(login));
   }, [login]);
 
+  const [userRegister, setUserRegister] = useState([]);
   //estado  y funciones del modal.
   const [show, setShow] = useState(false);
 
@@ -50,13 +46,12 @@ function App() {
               <Route path="detalle/:_id" element={<DetalleRecetas />} />
               <Route
                 path="crear"
-                element={
-                  <FormularioRecetas
-                    titulo="Crea una Receta Maestra"
-                  />
-                }
+                element={<FormularioRecetas titulo="Crea una Receta Maestra" />}
               />
-              <Route path="editar/:id" element={<FormularioRecetas titulo="Editar receta" />} />
+              <Route
+                path="editar/:id"
+                element={<FormularioRecetas titulo="Editar receta" />}
+              />
             </Route>
             <Route
               path="/register"

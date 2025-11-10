@@ -17,34 +17,39 @@ export const Login = ({ show, handleClose, setLogin }) => {
   } = useForm();
   const navegacion = useNavigate();
 
-  
   const onSubmit = async (dataLogin) => {
-  const respuesta = await login(dataLogin);
-  
-  if (respuesta.status === 200) {
-    const datos = await respuesta.json();
-    
-    setLogin({
-      usuario: datos.usuario,
-      token: datos.token,
-    });
-    
-    Swal.fire({
-      title: "Bienvenido Administrador",
-      text: "Iniciaste sesión correctamente.",
-      icon: "success",
-    });
-    
-    handleClose();
-    navegacion("/administracion");
-  } else {
-    Swal.fire({
-      title: "Ocurrió un error",
-      text: "Credenciales incorrectas",
-      icon: "error",
-    });
-  }
-};
+    const respuesta = await login(dataLogin);
+
+    if (respuesta.status === 200) {
+      const datos = await respuesta.json();
+
+      const datosUsuario = {
+        usuario: datos.usuario,
+        token: datos.token,
+      };
+
+      // Guarda antes de navegar al admin
+      sessionStorage.setItem("usuarioKey", JSON.stringify(datosUsuario));
+
+      // Actualiza el estado (para React)
+      setLogin(datosUsuario);
+
+      await Swal.fire({
+        title: `Bienvenido ${datos.usuario}`,
+        text: "Iniciaste sesión correctamente.",
+        icon: "success",
+      });
+
+      handleClose();
+      navegacion("/administracion");
+    } else {
+      Swal.fire({
+        title: "Ocurrió un error",
+        text: "Credenciales incorrectas",
+        icon: "error",
+      });
+    }
+  };
 
   return (
     <>

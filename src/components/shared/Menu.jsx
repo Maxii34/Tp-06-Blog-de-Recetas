@@ -9,7 +9,10 @@ export const Menu = ({ handleShow, login, setLogin }) => {
   const navegacion = useNavigate();
 
   const cerrarSesion = () => {
-    setLogin(false);
+    setLogin({
+      usuario: "",
+      token: "",
+    });
     navegacion("/");
   };
 

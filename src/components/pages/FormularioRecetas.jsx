@@ -23,7 +23,6 @@ export const FormularioRecetas = ({ titulo }) => {
 
   const { cargarRecetas } = useRecetas();
 
-
   useEffect(() => {
     buscarReceta();
   }, []);
@@ -52,7 +51,6 @@ export const FormularioRecetas = ({ titulo }) => {
     // Lógica de crear recetas
     if (titulo === "Crea una Receta Maestra") {
       const respuesta = await crearReceta(data);
-      console.log(respuesta);
       if (respuesta.status === 201) {
         Swal.fire({
           title: "Receta creada",
