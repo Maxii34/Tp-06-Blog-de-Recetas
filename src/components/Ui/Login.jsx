@@ -39,9 +39,9 @@ export const Login = ({ show, handleClose, setLogin }) => {
         text: "Iniciaste sesión correctamente.",
         icon: "success",
       });
-
-      handleClose();
+      reset();
       navegacion("/administracion");
+      handleClose();
     } else {
       Swal.fire({
         title: "Ocurrió un error",
