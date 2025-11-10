@@ -1,4 +1,5 @@
 const recetasBackend = import.meta.env.VITE_API_BACKEND
+const usuariosBackend = import.meta.env.VITE_API_USUARIO
 
 export const listarRecetas= async ()=>{
     try {
@@ -60,6 +61,25 @@ export const borrarReceta= async (id)=>{
     try {
         const respuesta = await fetch(`${recetasBackend}/${id}`, {
             method: 'DELETE'
+        })
+        console.log(respuesta)
+        return respuesta
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}
+
+// solicitudes para login
+
+export const login = async (usuario)=>{
+    try {
+        const respuesta = await fetch(`${usuariosBackend}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(usuario)
         })
         console.log(respuesta)
         return respuesta

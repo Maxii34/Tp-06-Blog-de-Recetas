@@ -2,6 +2,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { login } from "../helpers/queries";
 
 export const Login = ({ show, handleClose, setLogin }) => {
   const cerrarModal = () => {
@@ -17,36 +18,21 @@ export const Login = ({ show, handleClose, setLogin }) => {
 
   const navegacion = useNavigate();
 
-
-  const onSubmit = (dataLogin) => {
-    //logica de login
-    if (dataLogin.password === dataLogin.repeatpassword) {
-      if (
-        dataLogin.email === import.meta.env.VITE_API_EMAIL &&
-        dataLogin.password === import.meta.env.VITE_API_PASSWORD
-      ) {
-        setLogin(true);
-        console.log(setLogin);
-        Swal.fire({
-          title: "Bienvenido Administrador",
-          text: "Iniciaste sesion correctamente.",
-          icon: "success",
-        });
-        navegacion("/administracion");
-        handleClose();
-      } else {
-        Swal.fire({
-          title: "Ocurrio un error",
-          text: "Credenciales incorrectas",
-          icon: "error",
-        });
-      }
-      reset();
+  const onSubmit = async (dataLogin) => {
+    const respuesta = await login(dataLogin);
+    if (respuesta.status === 200) {
+      setLogin(true);
+      Swal.fire({
+        title: "Bienvenido Administrador",
+        text: "Iniciaste sesion correctamente.",
+        icon: "success",
+      });
+      navegacion("/administracion");
       handleClose();
     } else {
       Swal.fire({
         title: "Ocurrio un error",
-        text: "Las Contraseñas no coinciden, intentalo nuevamente.",
+        text: "Credenciales incorrectas",
         icon: "error",
       });
     }
@@ -76,7 +62,9 @@ export const Login = ({ show, handleClose, setLogin }) => {
                   },
                 })}
               />
-              {errors.email && <span className="text-danger">{errors.email?.message}</span>}
+              {errors.email && (
+                <span className="text-danger">{errors.email?.message}</span>
+              )}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -93,7 +81,9 @@ export const Login = ({ show, handleClose, setLogin }) => {
                   },
                 })}
               />
-              {errors.password && <span className="text-danger">{errors.password?.message}</span>}
+              {errors.password && (
+                <span className="text-danger">{errors.password?.message}</span>
+              )}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -111,7 +101,9 @@ export const Login = ({ show, handleClose, setLogin }) => {
                 })}
               />
               {errors.repeatpassword && (
-                <span className="text-danger">{errors.repeatpassword?.message}</span>
+                <span className="text-danger">
+                  {errors.repeatpassword?.message}
+                </span>
               )}
             </Form.Group>
 
