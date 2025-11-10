@@ -15,7 +15,10 @@ import Protector from "./components/routes/Protector.jsx";
 import { RecetasProvider } from "./components/Context/RecetasContext.jsx";
 
 function App() {
-  const sesionUsuario = JSON.parse(localStorage.getItem("usuarioKey")) || false;
+  const sesionUsuario = JSON.parse(localStorage.getItem("usuarioKey")) || {
+  usuario: "",
+  token: ""
+};
   //Estado del login.
   const [login, setLogin] = useState(sesionUsuario);
 

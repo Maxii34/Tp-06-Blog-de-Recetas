@@ -29,7 +29,7 @@ export const Menu = ({ handleShow, login, setLogin }) => {
             <Link to={"/"} className="nav-link me-1">
               Inicio
             </Link>
-            {login === true? (
+            {login.usuario ? (
               <>
                 <Link to="/administracion/recetas" className="nav-link me-1">
                   Recetas

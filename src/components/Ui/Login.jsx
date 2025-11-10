@@ -15,28 +15,36 @@ export const Login = ({ show, handleClose, setLogin }) => {
     reset,
     formState: { errors },
   } = useForm();
-
   const navegacion = useNavigate();
 
+  
   const onSubmit = async (dataLogin) => {
-    const respuesta = await login(dataLogin);
-    if (respuesta.status === 200) {
-      setLogin(true);
-      Swal.fire({
-        title: "Bienvenido Administrador",
-        text: "Iniciaste sesion correctamente.",
-        icon: "success",
-      });
-      navegacion("/administracion");
-      handleClose();
-    } else {
-      Swal.fire({
-        title: "Ocurrio un error",
-        text: "Credenciales incorrectas",
-        icon: "error",
-      });
-    }
-  };
+  const respuesta = await login(dataLogin);
+  
+  if (respuesta.status === 200) {
+    const datos = await respuesta.json();
+    
+    setLogin({
+      usuario: datos.usuario,
+      token: datos.token,
+    });
+    
+    Swal.fire({
+      title: "Bienvenido Administrador",
+      text: "Iniciaste sesión correctamente.",
+      icon: "success",
+    });
+    
+    handleClose();
+    navegacion("/administracion");
+  } else {
+    Swal.fire({
+      title: "Ocurrió un error",
+      text: "Credenciales incorrectas",
+      icon: "error",
+    });
+  }
+};
 
   return (
     <>
@@ -83,27 +91,6 @@ export const Login = ({ show, handleClose, setLogin }) => {
               />
               {errors.password && (
                 <span className="text-danger">{errors.password?.message}</span>
-              )}
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Repetir Contraseña</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Ingrese su contraseña"
-                {...register("repeatpassword", {
-                  required: "La contraseña es un campo requerido",
-                  pattern: {
-                    value:
-                      /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
-                    message: "La clave es obligatoria",
-                  },
-                })}
-              />
-              {errors.repeatpassword && (
-                <span className="text-danger">
-                  {errors.repeatpassword?.message}
-                </span>
               )}
             </Form.Group>
 
