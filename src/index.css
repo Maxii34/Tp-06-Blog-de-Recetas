@@ -590,3 +590,8 @@ nav {
     background-color: #b8870b85;
     padding: 20px;
 }
+.imagen-detalle {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}

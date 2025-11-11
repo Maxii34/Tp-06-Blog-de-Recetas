@@ -35,26 +35,27 @@ export const DetalleRecetas = () => {
             <Col xs={12} md={6} lg={6} className="p-0">
               <img
                 src={recetaDetalle.imagen}
-                alt="Receta"
+                alt="imagen de receta"
                 loading="lazy"
-                className="w-100 img-ingredientes rounded cards"
+                className="imagen-detalle rounded shadow"
               />
             </Col>
             <Col xs={12} md={6}>
               <h1 className="text-center display-6">{recetaDetalle.nombre}</h1>
-              <div className="bg-primary-subtle p-3 rounded">
-                <ul className="w-100 mb-0">{recetaDetalle.ingredientes}</ul>
+              <div className="bg-primary-subtle p-3 rounded shadow">
+                <div className="w-100 mb-0">
+                  <div>
+                    <p><b>Ingredientes: </b></p>
+                    {recetaDetalle.ingredientes}
+                  </div>
+                  <div className="my-2">
+                    <p><b>Preparación: </b></p>
+                    {recetaDetalle.preparacion}
+                  </div>
+                </div>
               </div>
             </Col>
           </Row>
-        </div>
-        <div className="my-3">
-          <h4 className="display-6 text-center p-2">
-            {recetaDetalle.preparacion}
-          </h4>
-          <div>
-            <ol></ol>
-          </div>
         </div>
       </Container>
       <Footer />

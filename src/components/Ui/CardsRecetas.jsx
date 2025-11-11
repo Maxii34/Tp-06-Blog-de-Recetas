@@ -18,7 +18,7 @@ export const CardsRecetas = ({ itemReceta }) => {
           {itemReceta.nombre}
         </Card.Title>
         <Link 
-          to={`/administracion/detalle/${itemReceta._id}`} 
+          to={`/detalle/${itemReceta._id}`} 
           className="btn card-button"
         >
           Ver Receta

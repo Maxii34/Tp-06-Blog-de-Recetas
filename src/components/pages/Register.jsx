@@ -1,10 +1,12 @@
 import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
-import { Menu, Footer } from "../index.jsx";
+import { Footer } from "../index.jsx";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { registroUsuario } from "../helpers/queries.js";
 
-export const Register = ({ setUserRegister, userRegister }) => {
+
+export const Register = () => {
   const {
     register,
     handleSubmit,
@@ -14,30 +16,51 @@ export const Register = ({ setUserRegister, userRegister }) => {
 
   const navegacion = useNavigate();
 
-  const onSubmit = (dataRegister) => {
-    console.log(dataRegister);
-    // Lógica de registro
-    if (dataRegister.password === dataRegister.repeatpassword) {
-      Swal.fire({
-        title: "Bienvenido",
-        text: "Te registraste correctamente.",
-        icon: "success",
-      });
-      setUserRegister([...userRegister, dataRegister]);
-      reset();
-      navegacion("/");
-    } else {
-      Swal.fire({
-        title: "Ocurrio un error",
-        text: "Las Contraseñas no coinciden, intentalo nuevamente.",
-        icon: "error",
-      });
-    }
+ const onSubmit = async (dataRegister) => {
+
+  // Validar contraseñas primero
+  if (dataRegister.password !== dataRegister.repeatpassword) {
+    return Swal.fire({
+      title: "Ocurrió un error",
+      text: "Las Contraseñas no coinciden, inténtalo nuevamente.",
+      icon: "error",
+    });
+  }
+
+  // Preparar datos para enviar
+  const datosParaEnviar = {
+    nombreUsuario: dataRegister.username,
+    email: dataRegister.email,
+    password: dataRegister.password
   };
+
+  const respuesta = await registroUsuario(datosParaEnviar);
+
+  // Si la respuesta NO es ok
+  if (!respuesta || !respuesta.ok) {
+    const datos = await respuesta.json();
+    return Swal.fire({
+      title: "Ocurrió un error",
+      text: datos?.mensaje || datos?.error || "No se pudo completar el registro.",
+      icon: "error",
+    });
+  }
+
+  // Si todo bien manda alert
+  const datos = await respuesta.json();
+  Swal.fire({
+    title: "Bienvenido",
+    text: "Te registraste correctamente.",
+    icon: "success",
+  });
+
+  reset();
+  navegacion("/");
+};
+
 
   return (
     <>
-      <Menu />
       <main>
         <Container className="my-5">
           <Row className="justify-content-md-center">

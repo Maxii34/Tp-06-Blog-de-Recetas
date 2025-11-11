@@ -38,12 +38,12 @@ function App() {
           <Menu handleShow={handleShow} login={login} setLogin={setLogin} />
           <Routes>
             <Route path="/" element={<Inicio />} />
+            <Route path="recetas" element={<Recetas />} />
+            <Route path="detalle/:_id" element={<DetalleRecetas />} />
 
             {/* Rutas protejidas */}
             <Route path="administracion" element={<Protector login={login} />}>
               <Route index element={<Administracion />} />
-              <Route path="recetas" element={<Recetas />} />
-              <Route path="detalle/:_id" element={<DetalleRecetas />} />
               <Route
                 path="crear"
                 element={<FormularioRecetas titulo="Crea una Receta Maestra" />}

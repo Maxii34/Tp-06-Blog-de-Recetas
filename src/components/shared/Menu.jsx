@@ -5,7 +5,6 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link, useNavigate } from "react-router";
 
 export const Menu = ({ handleShow, login, setLogin }) => {
-
   const navegacion = useNavigate();
 
   const cerrarSesion = () => {
@@ -15,7 +14,6 @@ export const Menu = ({ handleShow, login, setLogin }) => {
     });
     navegacion("/");
   };
-
 
   return (
     <Navbar
@@ -32,14 +30,11 @@ export const Menu = ({ handleShow, login, setLogin }) => {
             <Link to={"/"} className="nav-link me-1">
               Inicio
             </Link>
+            <Link to="/recetas" className="nav-link me-1">
+              Recetas
+            </Link>
             {login.usuario ? (
               <>
-                <Link to="/administracion/recetas" className="nav-link me-1">
-                  Recetas
-                </Link>
-                <Link to="/administracion/detalle" className="nav-link me-1">
-                  Detalles
-                </Link>
                 <Link to="/administracion" className="nav-link me-1">
                   Administración
                 </Link>
