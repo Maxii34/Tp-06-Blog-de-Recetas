@@ -8,11 +8,11 @@ Este es el frontend de una aplicación web de un blog de recetas. Permite a los 
 
 ## Deploy
 
-- [Link de la pagina](Proximamente)
+- [Link de la pagina](https://blogderecetasmax.netlify.app/)
 
 ## Repo del backend
 
-- [link Repositorio](Proximamente)
+- [link Repositorio](https://github.com/Maxii34/Tp-5-Backend-BlogDeRecetas./tree/dev)
 
 ## Características
 
