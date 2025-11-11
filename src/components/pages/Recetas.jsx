@@ -24,12 +24,6 @@ export const Recetas = () => {
             <h1>- Recetas de cocina -</h1>
           </div>
           <ContainerRecetas />
-          <div>
-            <h3 className="text-center py-4 text-dark display-6">
-              -Otras recetas que te pueden interesar-
-            </h3>
-
-          </div>
         </Container>
       </main>
       <Footer />

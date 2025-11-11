@@ -20,7 +20,7 @@ export const Menu = ({ handleShow, login, setLogin }) => {
   return (
     <Navbar
       expand="lg"
-      className="bg-body-tertiary border-1 border-dark border-bottom py-3 shadow"
+      className="nav-css border-1 border-dark border-bottom py-3 shadow"
     >
       <Container>
         <Navbar.Brand as={Link} to={"/"}>

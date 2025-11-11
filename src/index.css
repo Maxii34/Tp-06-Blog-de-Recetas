@@ -366,7 +366,7 @@ nav {
 .video-css {
   width: 100%;
   height: auto;
-  max-height: 330px;
+  max-height: 450px;
   object-fit: cover;
   display: block;
 }
@@ -581,4 +581,12 @@ nav {
   text-transform: uppercase;
   margin-top: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.nav-css {
+  background-color: #b8870bec;
+}
+.card-Redondad {
+    background-color: #b8870b85;
+    padding: 20px;
 }
