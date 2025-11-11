@@ -4,7 +4,7 @@ import { Link } from "react-router";
 export const Footer = () => {
   return (
     <footer className="bg-dark text-light mt-4 pt-4 pb-3">
-      <Container fluid>
+      <Container>
         <Row className="align-items-start text-center text-md-start gy-4">
           {/* Información */}
           <Col xs={12} md={4} className="px-3">

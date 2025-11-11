@@ -15,4 +15,6 @@ export * from "./Ui/ItenTable.jsx";
 export * from "./Ui/Login.jsx";
 export * from "./pages/Register.jsx";
 export * from "./pages/FormularioRecetas.jsx";
+export * from "./Ui/ModalAdminVer.jsx";
+export * from "./pages/DetalleRecetas.jsx";
 

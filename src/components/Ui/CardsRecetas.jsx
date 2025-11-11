@@ -1,18 +1,28 @@
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { Link } from "react-router";
 
-export const CardsRecetas = () => {
+export const CardsRecetas = ({ itemReceta }) => {  
   return (
-    <Card className="cardR">
-      <Card.Body className="card__contentR">
-        <Card.Title className="card__titleR">Card Title</Card.Title>
-        <Card.Text className="card__descriptionR">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco.
-        </Card.Text>
-        <div className="d-flex justify-content-center mt-5 shadow">
-        <Button variant="dark" className="w-100"><i class="bi bi-eye"></i> Ver más</Button>
-        </div>
+    <Card className="cardc">
+      <div className="overflow-hidden OVH">
+        <Card.Img 
+          variant="top" 
+          src={itemReceta.imagen} 
+          className="card-img-top card-image zoom-hover"
+          loading="lazy"
+          alt="recetas"
+        />
+      </div>
+      <Card.Body>
+        <Card.Title as="h4" className="card-title">
+          {itemReceta.nombre}
+        </Card.Title>
+        <Link 
+          to={`/detalle/${itemReceta._id}`} 
+          className="btn card-button"
+        >
+          Ver Receta
+        </Link>
       </Card.Body>
     </Card>
   );

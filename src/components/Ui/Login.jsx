@@ -1,9 +1,54 @@
 import { Button, Modal, Form } from "react-bootstrap";
-import { Link } from "react-router";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import { login } from "../helpers/queries";
 
-export const Login = ({ show, handleClose }) => {
+export const Login = ({ show, handleClose, setLogin }) => {
   const cerrarModal = () => {
     handleClose();
+  };
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const navegacion = useNavigate();
+
+  const onSubmit = async (dataLogin) => {
+    const respuesta = await login(dataLogin);
+
+    if (respuesta.status === 200) {
+      const datos = await respuesta.json();
+
+      const datosUsuario = {
+        usuario: datos.usuario,
+        token: datos.token,
+      };
+
+      // Guarda antes de navegar al admin
+      sessionStorage.setItem("usuarioKey", JSON.stringify(datosUsuario));
+
+      // Actualiza el estado (para React)
+      setLogin(datosUsuario);
+
+      await Swal.fire({
+        title: `Bienvenido ${datos.usuario}`,
+        text: "Iniciaste sesión correctamente.",
+        icon: "success",
+      });
+      reset();
+      navegacion("/administracion");
+      handleClose();
+    } else {
+      Swal.fire({
+        title: "Ocurrió un error",
+        text: "Credenciales incorrectas",
+        icon: "error",
+      });
+    }
   };
 
   return (
@@ -15,10 +60,24 @@ export const Login = ({ show, handleClose }) => {
         <Modal.Body className="login-content">
           <p className="title">Iniciar sesión</p>
 
-          <Form className="form">
+          <Form className="form" onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Correo</Form.Label>
-              <Form.Control type="email" placeholder="Ingrese su correo" />
+              <Form.Control
+                type="email"
+                placeholder="Ingrese su correo"
+                {...register("email", {
+                  required: "El correo es un campo requerido",
+                  pattern: {
+                    value:
+                      /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                    message: "El correo ingresado no es válido",
+                  },
+                })}
+              />
+              {errors.email && (
+                <span className="text-danger">{errors.email?.message}</span>
+              )}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -26,7 +85,18 @@ export const Login = ({ show, handleClose }) => {
               <Form.Control
                 type="password"
                 placeholder="Ingrese su contraseña"
+                {...register("password", {
+                  required: "La contraseña es un campo requerido",
+                  pattern: {
+                    value:
+                      /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
+                    message: "La clave es obligatoria",
+                  },
+                })}
               />
+              {errors.password && (
+                <span className="text-danger">{errors.password?.message}</span>
+              )}
             </Form.Group>
 
             <div className="forgot">

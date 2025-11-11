@@ -1,9 +1,30 @@
 // App.jsx
-import { BrowserRouter, Route, Routes } from "react-router"; 
-import { Inicio, Recetas, Administracion, Login, Register, FormularioRecetas } from "./components/index.jsx";
-import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router";
+import {
+  Inicio,
+  Recetas,
+  Administracion,
+  Login,
+  Register,
+  FormularioRecetas,
+  Menu,
+  DetalleRecetas,
+} from "./components/index.jsx";
+import { useEffect, useState } from "react";
+import Protector from "./components/routes/Protector.jsx";
+import { RecetasProvider } from "./components/Context/RecetasContext.jsx";
 
 function App() {
+  const sesionUsuario = JSON.parse(sessionStorage.getItem("usuarioKey")) || {};
+  //Estado del login.
+  const [login, setLogin] = useState(sesionUsuario);
+
+  useEffect(() => {
+    sessionStorage.setItem("usuarioKey", JSON.stringify(login));
+  }, [login]);
+
+  const [userRegister, setUserRegister] = useState([]);
+  //estado  y funciones del modal.
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -11,18 +32,40 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Login handleClose={handleClose} show={show} /> 
+      <RecetasProvider>
+        <BrowserRouter>
+          <Login handleClose={handleClose} show={show} setLogin={setLogin} />
+          <Menu handleShow={handleShow} login={login} setLogin={setLogin} />
+          <Routes>
+            <Route path="/" element={<Inicio />} />
+            <Route path="recetas" element={<Recetas />} />
+            <Route path="detalle/:_id" element={<DetalleRecetas />} />
 
-        <Routes>
-          <Route path="/" element={<Inicio handleShow={handleShow} />} />
-          <Route path="/recetas" element={<Recetas />} />
-          <Route path="/administracion" element={<Administracion />} />
-          <Route path="/formularioRecetas" element={<FormularioRecetas />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={""} />
-        </Routes>
-      </BrowserRouter>
+            {/* Rutas protejidas */}
+            <Route path="administracion" element={<Protector login={login} />}>
+              <Route index element={<Administracion />} />
+              <Route
+                path="crear"
+                element={<FormularioRecetas titulo="Crea una Receta Maestra" />}
+              />
+              <Route
+                path="editar/:id"
+                element={<FormularioRecetas titulo="Editar receta" />}
+              />
+            </Route>
+            <Route
+              path="/register"
+              element={
+                <Register
+                  setUserRegister={setUserRegister}
+                  userRegister={userRegister}
+                />
+              }
+            />
+            <Route path="*" element={""} />
+          </Routes>
+        </BrowserRouter>
+      </RecetasProvider>
     </>
   );
 }
